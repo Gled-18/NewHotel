@@ -126,7 +126,7 @@
                     'phoneNo' => trim($_POST['PhoneNo']),
                     'streetNo' => trim($_POST['StreetNo']),
                     'apartamentNo' => trim($_POST['ApartamentNo']),
-                    'role' => trim('other'), //trim($_POST['Role']),
+                    'role' => trim($_POST['Role']),
                     'description' => trim($_POST['Descrition']),
                     'email' => trim($_POST['Email']),
                     'password' => trim($_POST['Password']),
@@ -188,7 +188,7 @@
                     'phoneNo' => trim($_POST['PhoneNo']),
                     'streetNo' => trim($_POST['StreetNo']),
                     'apartamentNo' => trim($_POST['ApartamentNo']),
-                    'role' => trim('other'), //trim($_POST['Role']),
+                    'role' => $_POST['Role'],
                     'description' => trim($_POST['Descrition']),
                     'email' => trim($_POST['Email']),
                     //'password' => trim($_POST['Password']),
@@ -219,7 +219,7 @@
             'phoneNo' => $user->PhoneNo,
             'streetNo' => $user->StreetNo,
             'apartamentNo' => $user->ApartamentNo,
-            'role' => trim('ht_manager'), //trim($_POST['Role']),
+            'role' => $user->Role,
             'description' => $user->Descrition,
             'email' => $user->Email,
             //'password' => $user->Password
@@ -227,4 +227,20 @@
             $this->view('users/editUser', $data);
         }
     }
+
+    public function deleteUser($id){
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $user = $this->userModel->getUserByID($id);
+           
+            if($this->userModel->deleteuserM($id)){
+                redirect('users/manageUsers');
+            }
+        }else{
+            $user = $this->userModel->getUserById($id);
+            $data = [
+                'employeeID' => $user->employeeID
+            ];
+            $this->view('users/deleteUser', $data);
+        }
     }
+}

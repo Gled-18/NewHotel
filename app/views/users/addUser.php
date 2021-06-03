@@ -23,12 +23,12 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Hotel Manager</option>
-      <option>Restaurant Manager</option>
-      <option>Waiter</option>
-      <option>Receptionist</option>
-      <option>Other</option>
+    <select class="form-control" id="exampleFormControlSelect1" name='Role'>
+      <option value='ht_manager'>Hotel Manager</option>
+      <option value='rs_manager'>Restaurant Manager</option>
+      <option value='waiter'>Waiter</option>
+      <option value='other'>Receptionist</option>
+      <option value='other'>Other</option>
     </select>
   <div class="form-group">
     <label for="formGroupExampleInput">Description</label>

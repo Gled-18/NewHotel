@@ -14,7 +14,9 @@
       <td><?php echo $user->Name;?></td>
       <td><?php echo $user->Surname;?></td>
       <td><?php echo $user->Role;?></td>
-      <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php echo $user->employeeID; ?>">Edit</a></td>    
+      <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php echo $user->employeeID; ?>">Edit</a></td> 
+      <td><a href="<?php echo URLROOT; ?>/users/deleteUser/<?php echo $user->employeeID; ?>">Delete</a></td> 
+
   </tr>
   <?php endforeach; ?>
   </table>
