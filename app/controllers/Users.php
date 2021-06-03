@@ -188,7 +188,7 @@
                     'phoneNo' => trim($_POST['PhoneNo']),
                     'streetNo' => trim($_POST['StreetNo']),
                     'apartamentNo' => trim($_POST['ApartamentNo']),
-                    'role' => $_POST['Role'],
+                    'role' => trim($_POST['Role']),
                     'description' => trim($_POST['Descrition']),
                     'email' => trim($_POST['Email']),
                     //'password' => trim($_POST['Password']),

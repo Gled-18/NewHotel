@@ -24,13 +24,14 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select class="form-control" id="exampleFormControlSelect1" name="Role">
       <option>Hotel Manager</option>
       <option>Restaurant Manager</option>
       <option>Waiter</option>
       <option>Receptionist</option>
       <option>Other</option>
     </select>
+    </div>
   <div class="form-group">
     <label for="formGroupExampleInput">Description</label>
     <input type="text" name="Descrition" value="<?php echo $data['description']?>" class="form-control" id="formGroupExampleInput" placeholder="">

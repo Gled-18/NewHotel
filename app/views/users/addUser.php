@@ -30,6 +30,7 @@
       <option value='other'>Receptionist</option>
       <option value='other'>Other</option>
     </select>
+    </div>
   <div class="form-group">
     <label for="formGroupExampleInput">Description</label>
     <input type="text" name="Descrition" value="<?php echo $data['description']?>" class="form-control" id="formGroupExampleInput" placeholder="">
