@@ -8,7 +8,7 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root (eg. http://myapp.com or http://localhost/myapp)
-  define('URLROOT', 'http://localhost/NEWHOTEL');
+  define('URLROOT', 'http://localhost/NewHotel');
   // Site Name
   define('SITENAME', 'Greccia');
   
