@@ -12,8 +12,8 @@
                     <td><?php echo $roomType->typeName;?></td>
                     <td><?php echo $roomType->typeID;?></td>
                     <td><?php echo $roomType->price;?></td>
-                    <td><a href="<?php echo URLROOT; ?>/rooms/edit/<?php echo $roomType->typeID; ?>">Edit</a></td>
-                    <td><a href="<?php echo URLROOT; ?>/rooms/roomType/<?php echo $roomType->typeID; ?>">Delete</a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/editRoomType/<?php echo $roomType->typeID; ?>">Edit</a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/deleteRoomType/<?php echo $roomType->typeID; ?>">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
 
