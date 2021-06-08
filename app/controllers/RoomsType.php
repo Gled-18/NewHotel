@@ -1,15 +1,15 @@
 <?php
 
-class Rooms extends Controller
+class RoomsType extends Controller
 {
     public function __construct()
     {
-        $this->roomModel = $this->model('Room');
+        $this->roomModel = $this->model('RoomType');
     }
 
     public function index()
     {
-        $this->view('rooms/index');
+        $this->view('roomsType/index');
     }
 
     public function roomType()
@@ -18,7 +18,7 @@ class Rooms extends Controller
         $data = [
             "roomType" => $var
         ];
-        $this->view('rooms/roomType', $data);
+        $this->view('roomsType/roomType', $data);
     }
 
     public function addRoomType()
@@ -36,8 +36,8 @@ class Rooms extends Controller
 
 
             if ($this->roomModel->addNewRoomType($data)) {
-                flash('register_success', 'Room Type is registered.');
-                redirect('rooms/roomType');
+                flash('register_success', 'RoomType Type is registered.');
+                redirect('roomsType/roomType');
             } else {
                 die("Smth Went wrong");
             }
@@ -47,7 +47,7 @@ class Rooms extends Controller
                 'typeName' => '',
                 'price' => ''
             ];
-            $this->view('rooms/addRoomType', $data);
+            $this->view('roomsType/addRoomType', $data);
         }
     }
 
@@ -67,8 +67,8 @@ class Rooms extends Controller
             print_r($data);
             //make sure there is not an error (do not forget if)
             if ($this->roomModel->editType($data)) {
-                flash('post_message', 'Room Updated');
-                redirect('rooms/roomType');
+                flash('post_message', 'RoomType Updated');
+                redirect('roomsType/roomType');
             } else {
                 die('Something went wrong');
             }
@@ -80,7 +80,7 @@ class Rooms extends Controller
                 'typeName' => $roomType->typeName,
                 'price' => $roomType->price
             ];
-            $this->view('rooms/editRoomType', $data);
+            $this->view('roomsType/editRoomType', $data);
         }
     }
 
@@ -88,8 +88,8 @@ class Rooms extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($this->roomModel->deleteType($typeID)) {
-                flash('delete_success', 'Room Type is deleted.');
-                redirect('rooms/roomType');
+                flash('delete_success', 'RoomType Type is deleted.');
+                redirect('roomsType/roomType');
             }
         } else {
             $roomType = $this->roomModel->getRoomTypeByID($typeID);
@@ -97,7 +97,7 @@ class Rooms extends Controller
                 'typeName' => $roomType->typeName,
                 'typeID' => $roomType->typeID
             ];
-            $this->view('rooms/deleteRoomType', $data);
+            $this->view('roomsType/deleteRoomType', $data);
         }
     }
 }
