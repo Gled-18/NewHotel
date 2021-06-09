@@ -34,7 +34,7 @@
                     <h5 class="card-title"> Room Info</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
-                    <a href="<?php echo URLROOT; ?>/products/index" class="btn btn-primary">Manage Products</a>
+                    <a href="<?php echo URLROOT; ?>/rooms/manageRooms" class="btn btn-primary">Manage Products</a>
                 </div>
             </div>
         </div>

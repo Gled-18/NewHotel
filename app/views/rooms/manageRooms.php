@@ -11,7 +11,7 @@
                 <tr>
                     <td><?php echo $Room->RoomNo;?></td>
                     <td><?php echo $Room->Floor;?></td>
-                    <td><?php echo $Room->Occupied;?></td>
+                    <td><?php echo $Room->Status;?></td>
 
                     <td><a href="<?php echo URLROOT; ?>/rooms/editRoom/<?php echo $Room->typeID; ?>">Edit</a></td>
                     <td><a href="<?php echo URLROOT; ?>/roomsType/deleteRoom/<?php echo $Room->typeID; ?>">Delete</a></td>

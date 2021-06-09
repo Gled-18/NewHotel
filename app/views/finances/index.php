@@ -107,7 +107,7 @@
                 alternateGridFill: "none"
             }
         });
-        document.getElementById(chartDiv).
+        document.getElementById(chartDiv)
 
         function getPoints(i) {
             var extraY = i * 20;
