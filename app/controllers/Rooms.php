@@ -14,4 +14,99 @@ class Rooms extends Controller
         ];
         $this->view('rooms/manageRooms', $data);
     }
+
+    public function addRoom(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'RoomNo' => trim($_POST['RoomNo']),
+                'Floor' => trim($_POST['Floor']),
+                'Status' => trim($_POST['Status']),
+                'typeID' => trim($_POST['typeID']),
+
+                'RoomNo_error' => '',
+                'Floor_error' => '',
+                'Status_error' => '',
+                'typeID_error' => ''
+            ];
+            // Validation
+
+
+            if ($this->roomModel->addRoom($data)) {
+                flash('register_success', 'Room is registered.');
+                redirect('rooms/manageRooms');
+            } else {
+                die("Smth Went wrong");
+            }
+
+        } else {
+            $content = $this->roomModel->getRoomType();
+            $data = [
+                'RoomNo' => '',
+                'Floor' => '',
+                'Status' => '',
+                'type' => $content
+            ];
+            $this->view('rooms/addRoom', $data);
+        }
+    }
+
+    public function editRoom($RoomID){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'RoomID' => $RoomID,
+                'RoomNo' => trim($_POST['RoomNo']),
+                'Floor' => trim($_POST['Floor']),
+                'Status' => trim($_POST['Status']),
+                'typeID' => trim($_POST['typeID']),
+
+                'RoomNo_error' => '',
+                'Floor_error' => '',
+                'Status_error' => '',
+                'typeID_error' => ''
+            ];
+            // Validation
+
+
+            if ($this->roomModel->editRoom($data)) {
+                flash('post_message', 'Room is edited.');
+                redirect('rooms/manageRooms');
+            } else {
+                die("Smth Went wrong");
+            }
+
+        } else {
+            $roomType = $this->roomModel->getRoomType();
+            $room = $this->roomModel->getRoomByID($RoomID);
+            $data = [
+                'RoomID' => $RoomID,
+                'RoomNo' => $room->RoomNo,
+                'Floor' => $room->Floor,
+                'Status' => $room->Status,
+                'type' => $roomType
+            ];
+            $this->view('rooms/editRoom', $data);
+        }
+    }
+
+    public function deleteRoom($RoomID){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if ($this->roomModel->deleteRoom($RoomID)) {
+                flash('delete_success', 'Room is deleted.');
+                redirect('rooms/manageRooms');
+            }
+        } else {
+            $room = $this->roomModel->getRoomByID($RoomID);
+            $data = [
+                'RoomID' => $RoomID,
+                'RoomNo' => $room->RoomNo
+            ];
+            $this->view('rooms/deleteRoom', $data);
+        }
+
+
+    }
 }
