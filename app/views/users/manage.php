@@ -15,7 +15,6 @@
             </div>
         </div>
         <div class="col">
-
             <div class="card rounded border border-secondary" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
@@ -46,6 +45,28 @@
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
                     <a href="<?php echo URLROOT; ?>/finances/index" class="btn btn-primary">Manage Finances</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card rounded border border-dark" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> Manage Supplies </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                    <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card rounded border border-dark" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"> Show Inventory </h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                    <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
                 </div>
             </div>
         </div>

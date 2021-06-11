@@ -27,7 +27,7 @@
       <option value='ht_manager'>Hotel Manager</option>
       <option value='rs_manager'>Restaurant Manager</option>
       <option value='waiter'>Waiter</option>
-      <option value='other'>Receptionist</option>
+      <option value='receptionist'>Receptionist</option>
       <option value='other'>Other</option>
     </select>
     </div>
