@@ -109,5 +109,51 @@ class User
         }
     }
 
+    //////////recepsionisti
+    //nje klient i ri
+    function addNewClientR($data){
+        $this->db->query('INSERT INTO client(TimeOfRegs, DateOfRegs, clientName, Surname, employeeID) VALUES(CURTIME(), CURDATE(),:clientName, :Surname, :employeeID)');
+        $this->db->bind(':clientName', $data['clientName']);
+        $this->db->bind(':Surname', $data['Surname']);
+        $this->db->bind(':employeeID', $_SESSION['user_id']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //rezervimi i klienteve ne dhoma
+    function addNewReservationR($data, $var){
+        $this->db->query('INSERT INTO ClientRoom(RequestTime, stayStartDate, stayEndDate, clientID, RoomID, employeeID) VALUES(CURTIME(), :stayStartDate, :stayEndDate, :clientID, :RoomID, :employeeID)');
+        $this->db->bind(':stayStartDate', $data['stayStartDate']);
+        $this->db->bind(':stayEndDate', $data['stayEndDate']);
+        $this->db->bind(':clientID', $var);
+        $this->db->bind(':RoomID', $data['RoomsIDNO']);
+        $this->db->bind(':employeeID', $_SESSION['user_id']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // function getClientR($data){
+    //     $this->db->query("SELECT * FROM client WHERE clientName like %:clientName%");
+    //     $this->db->bind(':clientName', $data['clientName']);
+    //     $results = $this->db->resultSet();
+    //     return $results;
+    // }
+
+    public function getClient($data){
+        $this->db->query("SELECT clientID FROM client WHERE clientName =:clientName AND Surname =:Surname");
+        $this->db->bind(':clientName', $data['clientName']);
+        $this->db->bind(':Surname', $data['Surname']);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
 
 }
