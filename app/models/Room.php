@@ -14,6 +14,12 @@ class Room
 
         return $results;
     }
+    public function getRoomType(){
+        $this->db->query("Select * from roomType");
+
+        $content = $this->db->resultset();
+        return $content;
+    }
 
 
     // public function getRoomIDs(){
