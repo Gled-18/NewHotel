@@ -18,10 +18,10 @@
             <div class="card rounded border border-secondary" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Employee Info</h5>
+                    <h5 class="card-title">Room</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
-                    <a href="<?php echo URLROOT; ?>/rooms/index" class="btn btn-primary">Manage Rooms</a><br>
+                    <a href="<?php echo URLROOT; ?>/rooms/manageRooms" class="btn btn-primary">Manage Rooms</a><br>
                 </div>
             </div>
         </div>
@@ -30,10 +30,10 @@
             <div class="card rounded border border-danger" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"> Room Info</h5>
+                    <h5 class="card-title"> Room Type</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
                         of the card's content.</p>
-                    <a href="<?php echo URLROOT; ?>/rooms/manageRooms" class="btn btn-primary">Manage Products</a>
+                    <a href="<?php echo URLROOT; ?>/roomsType/roomType" class="btn btn-primary">Manage Room Types</a>
                 </div>
             </div>
         </div>
