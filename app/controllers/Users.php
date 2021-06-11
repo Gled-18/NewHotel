@@ -80,6 +80,9 @@ class Users extends Controller
         if ($_SESSION['user_role'] == 'ht_manager') {
             redirect('users/ht_manager');
         }
+        else if($_SESSION['user_role'] == 'other'){
+            redirect('users/receptionist');
+        }
 
     }
 
@@ -185,7 +188,6 @@ class Users extends Controller
             $this->view('users/addUser', $data);
         }
     }
-
 
     public function editUser($id)
     {
