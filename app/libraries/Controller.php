@@ -23,4 +23,15 @@
         die('View does not exist');
       }
     }
+
+   /* public function view1($view, $productName = [] , $description = [],$sellingPrice=[], $Quantity= [], $purchasePrice=[] ){
+      // Check for view file
+      if(file_exists('../app/views/'.$view.'.php')){
+        // Require view file
+        require_once '../app/views/'.$view.'.php';
+      } else {
+        // No view exists
+        die('View does not exist');
+      }
+    }*/
   }

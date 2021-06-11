@@ -3,22 +3,26 @@
     <div>
         <table>
             <tr>
-                <th>RoomNo</th>
-                <th>Floor</th>
-                <th>Occupied</th>
+                <th>RoomNo &emsp;</th>
+                <th>Floor &emsp;</th>
+                <th>Status &emsp;</th>
+                <th>Type &emsp;</th>
+                <th>Price &emsp;</th>
             </tr>
             <?php foreach($data['Room'] as $Room) : ?>
                 <tr>
                     <td><?php echo $Room->RoomNo;?></td>
                     <td><?php echo $Room->Floor;?></td>
                     <td><?php echo $Room->Status;?></td>
+                    <td><?php echo $Room->typeName;?></td>
+                    <td><?php echo $Room->price;?></td>
 
-                    <td><a href="<?php echo URLROOT; ?>/rooms/editRoom/<?php echo $Room->typeID; ?>">Edit</a></td>
-                    <td><a href="<?php echo URLROOT; ?>/roomsType/deleteRoom/<?php echo $Room->typeID; ?>">Delete</a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/editRoom/<?php echo $Room->RoomID; ?>">Edit</a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/deleteRoom/<?php echo $Room->RoomID; ?>">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
 
         </table>
-        <a href="<?php echo URLROOT; ?>/roomsType/addRoom">Add Room</a>
+        <a href="<?php echo URLROOT; ?>/rooms/addRoom">Add Room</a>
     </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

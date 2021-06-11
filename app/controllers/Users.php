@@ -5,6 +5,7 @@ class Users extends Controller
     public function __construct()
     {
         $this->userModel = $this->model('User');
+        $this->roomModel = $this->model('Room');
     }
 
     public function index()
@@ -80,8 +81,8 @@ class Users extends Controller
         if ($_SESSION['user_role'] == 'ht_manager') {
             redirect('users/ht_manager');
         }
-        else if($_SESSION['user_role'] == 'other'){
-            redirect('users/receptionist');
+        else if($_SESSION['user_role'] == 'receptionist') {
+            redirect ('users/receptionist');
         }
 
     }
@@ -94,13 +95,112 @@ class Users extends Controller
         session_destroy();
         redirect('users/login');
     }
-
+    //////////////////////////////////////////////ndeveprimi me faqe
     public function ht_manager()
     {
         $this->view('users/ht_manager');
     }
+    //////////////////////////////////////////////////recepsionist///////////////
+    public function receptionist()
+    {
+        $this->view('users/receptionist');
+    }
 
+    public function manage_rec()
+    {
+        $this->view('users/manage_rec');
+    }
+    public function clients_rec()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+        
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'clientName' => trim($_POST['clientName']),
+                'Surname' => trim($_POST['Surname']),
+                'clientName_err' => '',
+                'Surname_err' => ''
+            ];
+            if (empty($data['clientName_err']) && empty($data['Surname_err'])) {
+                if ($this->userModel->addNewClientR($data)) {
+                    flash('register_success', 'User is registered.');
+                    redirect('users/manage_rec');
+                }else{
+                    echo "Error";
+                }
+            }
+        }else{
+            $data = [
+                'clientName' => "",
+                'Surname' => "",
+                'clientName_err' => '',
+                'Surname_err' => ''
+            ];
+        $this->view('users/clients_rec', $data);
+        }
+    }
 
+    // public function reservations(){
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //         //Sanitize post data
+        
+    //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    //         $data = [
+    //             'clientName' => trim($_POST['clientName'])
+    //         ];
+    //         $clients = $this->userModel->getClientR($data);
+    //         foreach($clients as $client){
+    //             echo $client->clientName;
+    //         }
+    //     }else{
+    //         $data = [
+    //             'clientName' =>""
+    //         ];
+    //         $this->view('users/reservations', $data);
+    //     }
+        
+        
+    // }
+
+    public function reservations(){
+        $var = $this->roomModel->getRoomsIDNO();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                "RoomsIDNO" =>trim($_POST['RoomIDNO']),
+                "clientName" =>trim($_POST['clientName']),
+                "stayStartDate" =>trim($_POST['stayStartDate']),
+               "stayEndDate" => trim($_POST['stayEndDate']),
+                "Surname" => trim($_POST['Surname'])
+            ];
+            var_dump($data["RoomsIDNO"]);
+            $var2 = $this->userModel->getClient($data);
+           
+            $id_to_use = $var2[0]->clientID;
+            $id_to_use = $id_to_use + 0;
+            var_dump($id_to_use);
+            if(!empty($var2)){
+                if($this->userModel->addNewReservationR($data, (int)$id_to_use)){
+                    redirect("users/manage_rec");
+                }
+            }
+        }else{
+            
+            $data = [
+                "RoomsIDNO" => $var,
+                "clientName" =>"",
+                "stayStartDate" => "",
+                "stayEndDate" => "",
+                "Surname" => "",
+            ];
+            $this->view('users/reservations',$data);
+        }
+    }
+
+   
+
+    ////////////////////////////////////////////////////////////////////////////////////
     //extra
     public function showInfo()
     {
@@ -114,7 +214,7 @@ class Users extends Controller
     }
 
     public function manage()
-    {
+    {   
         $this->view('users/manage');
     }
 
