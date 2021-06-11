@@ -12,26 +12,26 @@
 
         <div class="form-group">
             <label for="exampleFormControlSelect1">Room Status</label>
-            <select class="form-control" id="exampleFormControlSelect1" name='Status' value="<?php echo $data['Status'];?>">
-                <option value='Available'>Available</option>
-                <option value='Occupied'>Occupied</option>
-                <option value='Reserved'>Reserved</option>
-                <option value='Out of Service'>Out of Service</option>
+            <select class="form-control" id="exampleFormControlSelect1" name='Status'>
+                <?php $status = array('Available','Occupied','Reserved','Out of Service');?>
+                <?php foreach($status as $Status) : ?>
+                    <option value='<?php echo $Status;?>'<?php if ($Status == $data['Status']) echo ' selected="selected"'; ?>><?php echo $Status;?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Room Type</label>
-            <select class="form-control" id="exampleFormControlSelect1" name='typeID' value="<?php echo $data['type']->typeID;?>>
+            <label for="exampleFormControlSelect2">Room Type</label>
+            <select class="form-control" id="exampleFormControlSelect2" name='typeID'>
                 <?php foreach($data['type'] as $Room) : ?>
-                    <option value='<?php echo $Room->typeID;?>'><?php echo $Room->typeName;?></option>
+                    <option value='<?php echo $Room->typeID;?>'<?php if ($Room->typeID == $data['typeID']) echo ' selected="selected"'; ?>><?php echo $Room->typeName;?></option>
                 <?php endforeach; ?>
             </select>
         </div>
 
         <div class="form-group">
             <label for="formGroupExampleInput">Price</label>
-            <input type="text" name="Price" value="<?php  ;?>" class="form-control" id="formGroupExampleInput" placeholder="" readonly>
+            <input type="text" name="Price" value="<?php foreach ($data['type'] as $Room) :?><?php if ($Room->typeID == $data['typeID']) echo $Room->price?><?php endforeach; ?>" class="form-control" id="formGroupExampleInput" placeholder="" readonly>
         </div><br>
 
         <button type="submit" class="btn btn-primary">Submit</button>
