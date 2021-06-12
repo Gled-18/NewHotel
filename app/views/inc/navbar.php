@@ -21,8 +21,11 @@
       </li>
       <?php endif; ?>
       <li class="nav-item">
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+                </li>
+      <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </nav>
