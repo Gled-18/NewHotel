@@ -12,7 +12,7 @@
         <th>
           <a href="<?php echo URLROOT; ?>/users/addUser">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/app/assets/user-plus-solid.svg"); ?>
+              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/public/assets/user-plus-solid.svg"); ?>
             </button>
           </a>
         </th>

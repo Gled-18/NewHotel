@@ -12,18 +12,17 @@
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-function add_row()
-{
- $rowno=$("#employee_table tr").length;
- $rowno=$rowno+1;
- $("#employee_table tr:last").after("<tr id='row"+$rowno+"'><td><input type='text' name='prodName[]' placeholder='Product Name'></td><td><input type='text' name='description[]' placeholder='Description'></td><td><input type='text' name='quantity[]' placeholder='Quantity'></td><td><input type='text' name='purPrice[]' placeholder='Purchase Price'></td><td><input type='text' name='sellPrice[]' placeholder='Selling Price'></td><td><input type='button' value='DELETE' onclick=delete_row('row"+$rowno+"')></td></tr>");
-}
-function delete_row(rowno)
-{
- $('#'+rowno).remove();
-}
-</script>
+  <script type="text/javascript">
+    function add_row() {
+      $rowno = $("#employee_table tr").length;
+      $rowno = $rowno + 1;
+      $("#employee_table tr:last").after("<tr id='row" + $rowno + "'><td><input type='text' name='prodName[]' placeholder='Product Name'></td><td><input type='text' name='description[]' placeholder='Description'></td><td><input type='text' name='quantity[]' placeholder='Quantity'></td><td><input type='text' name='purPrice[]' placeholder='Purchase Price'></td><td><input type='text' name='sellPrice[]' placeholder='Selling Price'></td><td><input type='button' value='DELETE' onclick=delete_row('row" + $rowno + "')></td></tr>");
+    }
+
+    function delete_row(rowno) {
+      $('#' + rowno).remove();
+    }
+  </script>
   <title><?php echo SITENAME; ?></title>
 </head>
 
@@ -33,4 +32,4 @@ function delete_row(rowno)
  <?php endif; ?> -->
   <!--<body>-->
   <!---->
-  <div class="container">
+  <div class="container" style="margin:0; width:100%;"></div>

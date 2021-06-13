@@ -9,44 +9,60 @@
 <input type="text" name="clientName">
 <input type="submit" name="submit" value="Search">
 </form> -->
-<form action="<?php echo URLROOT.'/users/reservations';?>" method="post">
-<!-- <div class="form-outline">
+<form action="<?php echo URLROOT . '/users/reservations'; ?>" method="post">
+  <!-- <div class="form-outline">
   <input type="search" id="clientName" class="form-control" placeholder="Client"
   aria-label="Search" name="clientName" />
 </div> -->
-<div class="form-group">
+
+
+
+
+  <!-- <div class="form-group">
     <label for="formGroupExampleInput">Client Name</label>
-    <input type="text" name="clientName" value="<?php echo $data['clientName']?>" class="form-control" id="formGroupExampleInput" placeholder="">
+    <input type="text" name="clientName" value="<?php echo $data['clientName'] ?>" class="form-control" id="formGroupExampleInput" placeholder="">
   </div>
-<div class="form-group">
+  <div class="form-group">
     <label for="formGroupExampleInput">Client Surname</label>
-    <input type="text" name="Surname" value="<?php echo $data['Surname']?>" class="form-control" id="formGroupExampleInput" placeholder="">
+    <input type="text" name="Surname" value="<?php echo $data['Surname'] ?>" class="form-control" id="formGroupExampleInput" placeholder="">
   </div>
-<input type="date" id="stayStartDate" name="stayStartDate" value="<?php echo $data['stayStartDate']?>">
-<label for="birthday">Start Date:</label>
-<?php var_dump($data['stayStartDate']); ?>
-<?php var_dump($data['stayEndDate']); ?>
-<input type="date" id="stayEndDate" name="stayEndDate" value="<?php echo $data['stayEndDate']?>">
-<label for="birthday">End Date:</label>
-<div class="form-group">
+  <input type="date" id="stayStartDate" name="stayStartDate" value="<?php echo $data['stayStartDate'] ?>">
+  <label for="birthday">Start Date:</label>
+  <?php var_dump($data['stayStartDate']); ?>
+  <?php var_dump($data['stayEndDate']); ?>
+  <input type="date" id="stayEndDate" name="stayEndDate" value="<?php echo $data['stayEndDate'] ?>">
+  <label for="birthday">End Date:</label>
+
+  <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
     <select class="form-control" id="RoomID" name='RoomIDNO'>
-    
-    <?php foreach ($data['RoomsIDNO'] as $RoomsIDNO) : ?>
 
-      <?php $RoomID = strval($RoomsIDNO->RoomID); ?>
-      <?php $myStr1 = strval($RoomsIDNO->RoomNo); ?>
-      <?php var_dump($myStr); ?>
-      <?php var_dump($myStr1); ?>
-      <?php var_dump($RoomsIDNO); ?>
+      <?php foreach ($data['RoomsIDNO'] as $RoomsIDNO) : ?>
 
-  
+        <?php $RoomID = strval($RoomsIDNO->RoomID); ?>
+        <?php $myStr1 = strval($RoomsIDNO->RoomNo); ?>
+        <?php var_dump($myStr); ?>
+        <?php var_dump($myStr1); ?>
+        <?php var_dump($RoomsIDNO); ?>
 
-      <option value='<?php echo $RoomID ?>'><?php echo $myStr1;?></option>
-    <?php endforeach; ?>
+        <option value='<?php echo $RoomID ?>'><?php echo $myStr1; ?></option>
+      <?php endforeach; ?>
     </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button> -->
+
+  <!-- start -->
+
+  <!-- kjo forma do me sjelli dhomat  -->
+  <div class="d-flex flex-row flex-sm-column flex-md-row justify-content-center my-5">
+    <label for="datepicker" class="mx-5">From: </label>
+    <input id="datepicker" width="270" type="date" />
+    <label for="datepicker" class="mx-5">To: </label>
+    <input id="datepicker2" width="270" type="date" />
+    <button class="btn btn-primary " name="submit" type="submit">Search</button>
+  </div>
+
+
 
 </form>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
