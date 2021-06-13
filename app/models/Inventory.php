@@ -58,11 +58,12 @@
 
     public function updateManageSupplies($data, $id)
     {
-      $this->db->query('INSERT INTO managesupplies( manageSuppliesDate, Quantity, purchasePrice, productName, productID, employeeID) VALUES (CURDATE(), :Quantity,  :purchasePrice, :productName, :productID, :employeeID)');
+      $this->db->query('INSERT INTO managesupplies( manageSuppliesDate, Quantity, purchasePrice, productName, action, productID, employeeID) VALUES (CURDATE(), :Quantity,  :purchasePrice, :productName, :action ,:productID, :employeeID)');
       $this->db->bind(':Quantity', $data['Quantity']);
       $this->db->bind(':purchasePrice', $data['purchasePrice']);
       // $this->db->bind(':transactionID', $data['transactionID']);
       $this->db->bind(':productName', $data['productName']);
+      $this->db->bind(':action', $data['Action']);
       $this->db->bind(':productID', $id); 
       $this->db->bind(':employeeID', $_SESSION['user_id']);
       
@@ -71,6 +72,18 @@
       } else {
           return false;
       }
+    }
+
+    ///LIMIT 0 , 10
+    public function showTransactionLimited(){
+      $this->db->query('SELECT * FROM managesupplies ORDER BY transactionID DESC LIMIT 0 , 10');
+      $results = $this->db->resultSet();
+      return $results;
+    }
+    public function showTransaction(){
+      $this->db->query('SELECT * FROM managesupplies ORDER BY transactionID DESC');
+      $results = $this->db->resultSet();
+      return $results;
     }
 
     

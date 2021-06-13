@@ -23,7 +23,7 @@
                     <h5 class="card-title">Transactions on Inventory</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                         the card's content.</p>
-                    <a href="<?php echo URLROOT; ?>/users/reservations" class="btn btn-primary">Show</a><br>
+                    <a href="<?php echo URLROOT; ?>/users/transactions" class="btn btn-primary">Show</a><br>
                 </div>
             </div>
         </div>

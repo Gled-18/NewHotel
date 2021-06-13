@@ -186,7 +186,7 @@ class Users extends Controller
                 $updated_quantity = $current_quantity - $new_quantity;
 
             }
-            var_dump($updated_quantity);
+
 
             $id = $this->inventoryModel->getProductIDbyName($data);
             $id = $id[0]->productID;
@@ -216,6 +216,22 @@ class Users extends Controller
             $this->view('users/manage_inventory',$data);
         }
         
+    }
+
+    public function transactions(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+            $transactions = $this->inventoryModel-> showTransaction();
+            $data = [
+                'transactions' => $transactions
+            ];
+            $this->view('users/transactions', $data);
+        }else{
+            $transactions = $this->inventoryModel-> showTransactionLimited();
+            $data = [
+                'transactions' => $transactions
+            ];
+            $this->view('users/transactions', $data);
+        } 
     }
 
 
