@@ -31,8 +31,6 @@ class Rooms extends Controller
                 'typeID_error' => ''
             ];
             // Validation
-
-
             if ($this->roomModel->addRoom($data)) {
                 flash('register_success', 'Room is registered.');
                 redirect('rooms/manageRooms');

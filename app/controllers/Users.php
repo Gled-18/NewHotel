@@ -221,23 +221,15 @@ class Users extends Controller
     }
 
     public function transactions(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
             $transactions = $this->inventoryModel-> showTransaction();
             $data = [
                 'transactions' => $transactions
             ];
             $this->view('users/transactions', $data);
-        }else{
-            $transactions = $this->inventoryModel-> showTransactionLimited();
-            $data = [
-                'transactions' => $transactions
-            ];
-            $this->view('users/transactions', $data);
-        } 
     }
 
 
-
+   
 
 
 
