@@ -6,6 +6,7 @@ class Users extends Controller
     {
         $this->userModel = $this->model('User');
         $this->roomModel = $this->model('Room');
+        $this->inventoryModel = $this->model('Inventory');
     }
 
     public function index()
@@ -84,6 +85,9 @@ class Users extends Controller
         else if($_SESSION['user_role'] == 'receptionist') {
             redirect ('users/receptionist');
         }
+        else if($_SESSION['user_role'] == 'rs_manager') {
+            redirect ('users/rs_manager');
+        }
 
     }
 
@@ -100,6 +104,125 @@ class Users extends Controller
     {
         $this->view('users/ht_manager');
     }
+
+    ///////////////////////////////////
+    public function rs_manager()
+    {
+        $this->view('users/rs_manager');
+    }
+
+    public function manage_rs_manager()
+    {
+        $this->view('users/manage_rs_manager');
+    }
+
+
+    /////////inventory
+    public function show_inventory()
+    {
+        $items = $this->inventoryModel->show();
+        $data = [
+            'items' => $items
+        ];
+        $this->view('users/show_inventory', $data);
+    }
+
+    public function addInventory()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+           
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'productName'=> trim($_POST['productName']),
+                // 'productQuantity' => trim($_POST['productQuantity']),
+                'description' => trim($_POST['description']),
+                'sellingPrice' => trim($_POST['sellingPrice'])
+            ];
+
+            //need some validation here
+
+            //make sure there are empty error than...
+            
+            if ($this->inventoryModel->addToInventory($data)) {
+               
+                redirect('users/show_inventory');
+            } else {
+                die("Smth Went wrong");
+            }
+        } else {
+            //initialize data
+          
+            $data = [
+                'productName'=> '',
+                // 'productQuantity' => '',
+                'description' => '',
+                'sellingPrice' => ''
+            ];
+            $this->view('users/addInventory', $data);
+        }
+
+    }
+
+    public function manage_inventory(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+           
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'productName'=> trim($_POST['productName']),
+                'Quantity' => trim($_POST['Quantity']),
+                'purchasePrice' => trim($_POST['purchasePrice']),
+                'Action' => trim($_POST['Action']),
+            ];
+            $current_quantity = $this->inventoryModel->getProductQuantity($data);
+            $current_quantity = $current_quantity[0]->productQuantity;
+            $current_quantity = $current_quantity + 0;
+            $new_quantity = $data['Quantity'];
+
+            if($data['Action'] == 'add'){
+                $updated_quantity = $current_quantity + $new_quantity;
+            }else{
+                $updated_quantity = $current_quantity - $new_quantity;
+
+            }
+            var_dump($updated_quantity);
+
+            $id = $this->inventoryModel->getProductIDbyName($data);
+            $id = $id[0]->productID;
+            $id = $id + 0;
+            
+            //need some validation here
+
+            //make sure there are empty error than...
+            
+            if ($this->inventoryModel->updateManageSupplies($data, $id)) {
+               if($this->inventoryModel->updateQuantity($id, $updated_quantity)){
+                redirect('users/show_inventory');
+               }
+                
+            } else {
+                die("Smth Went wrong");
+            }
+        } else {
+            //initialize data
+          
+            $data = [
+                'productName'=> '',
+                'Quantity' => '',
+                'purchasePrice' => '',
+                'Action' =>  ''
+            ];
+            $this->view('users/manage_inventory',$data);
+        }
+        
+    }
+
+
+
+
+
+
     //////////////////////////////////////////////////recepsionist///////////////
     public function receptionist()
     {
@@ -174,12 +297,10 @@ class Users extends Controller
                "stayEndDate" => trim($_POST['stayEndDate']),
                 "Surname" => trim($_POST['Surname'])
             ];
-            var_dump($data["RoomsIDNO"]);
             $var2 = $this->userModel->getClient($data);
            
             $id_to_use = $var2[0]->clientID;
             $id_to_use = $id_to_use + 0;
-            var_dump($id_to_use);
             if(!empty($var2)){
                 if($this->userModel->addNewReservationR($data, (int)$id_to_use)){
                     redirect("users/manage_rec");

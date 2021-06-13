@@ -24,8 +24,7 @@
   </div>
 <input type="date" id="stayStartDate" name="stayStartDate" value="<?php echo $data['stayStartDate']?>">
 <label for="birthday">Start Date:</label>
-<?php var_dump($data['stayStartDate']); ?>
-<?php var_dump($data['stayEndDate']); ?>
+
 <input type="date" id="stayEndDate" name="stayEndDate" value="<?php echo $data['stayEndDate']?>">
 <label for="birthday">End Date:</label>
 <div class="form-group">
