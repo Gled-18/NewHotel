@@ -46,4 +46,4 @@ function delete_row(rowno)
  <?php endif; ?> -->
   <!--<body>-->
   <!---->
-  <div class="container" style="margin:0; width:100%;"></div>
+  <div class="container" ></div>

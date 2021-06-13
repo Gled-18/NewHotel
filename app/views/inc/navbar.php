@@ -11,23 +11,25 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo URLROOT; ?>/users/showInfo/<?php echo $_SESSION['user_id']; ?>">My Data</a>
       </li>
-      <?php if($_SESSION['user_role'] == 'ht_manager'): ?>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage/">Manage</a>
-      </li>
-      <?php elseif($_SESSION['user_role'] == 'receptionist') : ?>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rec/">Manage</a>
-      </li>
-      <?php elseif($_SESSION['user_role'] == 'rs_manager') : ?>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rs_manager/">Manage</a>
-      </li>
+      <?php if ($_SESSION['user_role'] == 'ht_manager') : ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage/">Manage</a>
+        </li>
+      <?php elseif ($_SESSION['user_role'] == 'receptionist') : ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rec/">Manage</a>
+        </li>
+      <?php elseif ($_SESSION['user_role'] == 'rs_manager') : ?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rs_manager/">Manage</a>
+        </li>
       <?php endif; ?>
       <li class="nav-item">
-                    <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
-                </li>
-      <!-- <li class="nav-item">
+        <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+      </li>
+  </div>
+</nav>
+<!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
 

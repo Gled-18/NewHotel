@@ -15,8 +15,6 @@
 
 <body class="bg-primary">
 
-<img src="./" alt="">
-
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
