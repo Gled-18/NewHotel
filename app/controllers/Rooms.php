@@ -85,6 +85,7 @@ class Rooms extends Controller
                 'RoomID' => $RoomID,
                 'RoomNo' => $room->RoomNo,
                 'Floor' => $room->Floor,
+                'typeID' => $room->typeID,
                 'Status' => $room->Status,
                 'type' => $roomType
             ];
