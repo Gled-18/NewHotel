@@ -219,23 +219,15 @@ class Users extends Controller
     }
 
     public function transactions(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
             $transactions = $this->inventoryModel-> showTransaction();
             $data = [
                 'transactions' => $transactions
             ];
             $this->view('users/transactions', $data);
-        }else{
-            $transactions = $this->inventoryModel-> showTransactionLimited();
-            $data = [
-                'transactions' => $transactions
-            ];
-            $this->view('users/transactions', $data);
-        } 
     }
 
 
-
+   
 
 
 
@@ -249,11 +241,21 @@ class Users extends Controller
     {
         $this->view('users/manage_rec');
     }
-    public function clients_rec()
+
+    public function clients_rec(){
+        $content = $this->userModel->showClients();
+        $data = [
+            'Client' => $content
+        ];
+        $this->view('users/clients_rec', $data);
+
+    }
+
+    public function addClient()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
-        
+
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'clientName' => trim($_POST['clientName']),
@@ -264,7 +266,7 @@ class Users extends Controller
             if (empty($data['clientName_err']) && empty($data['Surname_err'])) {
                 if ($this->userModel->addNewClientR($data)) {
                     flash('register_success', 'User is registered.');
-                    redirect('users/manage_rec');
+                    redirect('users/clients_rec');
                 }else{
                     echo "Error";
                 }
@@ -276,14 +278,62 @@ class Users extends Controller
                 'clientName_err' => '',
                 'Surname_err' => ''
             ];
-        $this->view('users/clients_rec', $data);
+        $this->view('users/addClient', $data);
+        }
+    }
+
+    public function editClient($clientID){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'clientID' => $clientID,
+                'clientName' => trim($_POST['clientName']),
+                'Surname' => trim($_POST['Surname']),
+                'clientName_err' => '',
+                'Surname_err' => ''
+            ];
+            if (empty($data['clientName_err']) && empty($data['Surname_err'])) {
+                if ($this->userModel->editClient($data)) {
+                    flash('post_message', 'Client is edited.');
+                    redirect('users/clients_rec');
+                }else{
+                    echo "Error";
+                }
+            }
+        }else{
+            $Client = $this->userModel->getClientByID($clientID);
+
+            $data = [
+                'clientID' => $clientID,
+                'clientName' => $Client->clientName,
+                'Surname' => $Client->Surname
+            ];
+            $this->view('users/editClient', $data);
+        }
+    }
+    public function deleteClient($clientID){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if ($this->userModel->deleteClient($clientID)) {
+                flash('delete_success', 'Client is deleted.');
+                redirect('users/clients_rec');
+            }
+        } else {
+            $Client = $this->userModel->getClientByID($clientID);
+            $data = [
+                'clientID' => $clientID,
+                'clientName' => $Client->clientName,
+                'Surname' => $Client->Surname
+            ];
+            $this->view('users/deleteClient', $data);
         }
     }
 
     // public function reservations(){
     //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //         //Sanitize post data
-        
+
     //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     //         $data = [
     //             'clientName' => trim($_POST['clientName'])
@@ -298,11 +348,21 @@ class Users extends Controller
     //         ];
     //         $this->view('users/reservations', $data);
     //     }
-        
-        
+
+
     // }
 
     public function reservations(){
+        $content = $this->userModel->showReservations();
+        $data = [
+          'Reservation' =>$content
+        ];
+
+        $this->view('users/reservations', $data);
+
+    }
+
+    public function addReservation(){
         $var = $this->roomModel->getRoomsIDNO();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -314,16 +374,16 @@ class Users extends Controller
                 "Surname" => trim($_POST['Surname'])
             ];
             $var2 = $this->userModel->getClient($data);
-           
+
             $id_to_use = $var2[0]->clientID;
             $id_to_use = $id_to_use + 0;
             if(!empty($var2)){
                 if($this->userModel->addNewReservationR($data, (int)$id_to_use)){
-                    redirect("users/manage_rec");
+                    redirect("users/reservations");
                 }
             }
         }else{
-            
+
             $data = [
                 "RoomsIDNO" => $var,
                 "clientName" =>"",
@@ -331,11 +391,77 @@ class Users extends Controller
                 "stayEndDate" => "",
                 "Surname" => "",
             ];
-            $this->view('users/reservations',$data);
+            $this->view('users/addReservation',$data);
         }
     }
 
-   
+    public function editReservation($requestID){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'requestID' => $requestID,
+                'clientName' => trim($_POST['clientName']),
+                'Surname' => trim($_POST['Surname']),
+                "stayStartDate" =>trim($_POST['stayStartDate']),
+                "stayEndDate" => trim($_POST['stayEndDate']),
+                'RoomID' => trim($_POST['RoomID']),
+                'clientName_err' => '',
+                'Surname_err' => '',
+                "stayStartDate_err" =>'',
+                "stayEndDate_err" => ''
+            ];
+            $client = $this->userModel->getClientID($data);
+            $clientID = $client->clientID;
+            if (empty($data['clientName_err']) && empty($data['Surname_err'])) {
+                if ($this->userModel->editReservation($data, $clientID)) {
+                    flash('post_message', 'Reservation is edited.');
+                    redirect('users/reservations');
+                }else{
+                    echo "Error";
+                }
+            }
+        }else{
+            $Reservation = $this->userModel->getReservationByID($requestID);
+            $Client = $this->userModel->getClientByID($Reservation->clientID);
+            $Rooms = $this->roomModel->showRooms();
+            $data = [
+                'requestID' => $requestID,
+                'RoomID' => $Reservation->RoomID,
+                'clientName' =>$Client->clientName,
+                'Surname' => $Client->Surname,
+                'stayStartDate' => $Reservation->stayStartDate,
+                'stayEndDate' =>  $Reservation->stayEndDate,
+                'Rooms' => $Rooms
+            ];
+            $this->view('users/editReservation', $data);
+        }
+
+
+    }
+
+   public function deleteReservation($requestID){
+       if ($_SERVER['REQUEST_METHOD'] == "POST") {
+           if ($this->userModel->deleteReservation($requestID)) {
+               flash('delete_success', 'Reservation is deleted.');
+               redirect('users/reservations');
+           }
+       } else {
+           $Reservation = $this->userModel->getReservationByID($requestID);
+           $Client = $this->userModel->getClientByID($Reservation->clientID);
+           $data = [
+               'requestID' => $requestID,
+               'Reservation' => $Reservation,
+               'clientID' => $Client->clientID,
+               'clientName' => $Client->clientName,
+               'Surname' => $Client->Surname
+           ];
+           $this->view('users/deleteReservation', $data);
+       }
+
+
+   }
 
     ////////////////////////////////////////////////////////////////////////////////////
     //extra

@@ -111,12 +111,51 @@ class User
 
     //////////recepsionisti
     //nje klient i ri
+
+    function showClients(){
+
+        $this->db->query('Select * from client');
+
+        $result = $this->db->resultset();
+        return $result;
+    }
+    function getClientByID($clientID){
+        $this->db->query('Select * from Client where clientID = :clientID');
+        $this->db->bind('clientID', $clientID);
+
+        $result =$this->db->single();
+        return $result;
+
+    }
     function addNewClientR($data){
         $this->db->query('INSERT INTO client(TimeOfRegs, DateOfRegs, clientName, Surname, employeeID) VALUES(CURTIME(), CURDATE(),:clientName, :Surname, :employeeID)');
         $this->db->bind(':clientName', $data['clientName']);
         $this->db->bind(':Surname', $data['Surname']);
         $this->db->bind(':employeeID', $_SESSION['user_id']);
 
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function editClient($data){
+        $this->db->query('Update client Set  clientName = :clientName, Surname = :Surname where clientID = :clientID');
+        $this->db->bind(':clientName', $data['clientName']);
+        $this->db->bind(':Surname', $data['Surname']);
+        $this->db->bind(':clientID', $data['clientID']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function deleteClient($clientID){
+        $this->db->query('Delete from Client where clientID = :clientID');
+        $this->db->bind(':clientID', $clientID);
         if ($this->db->execute()) {
             return true;
         } else {
@@ -140,6 +179,60 @@ class User
         }
     }
 
+    function getReservationByID($requestID){
+        $this->db->query('Select * from clientroom where requestID = :requestID');
+        $this->db->bind('requestID', $requestID);
+
+        $results = $this->db->single();
+        return $results;
+
+    }
+
+    function showReservations(){
+        $this->db->query('Select cr.requestID,room.RoomNo,cr.stayStartDate,cr.stayEndDate,concat(cl.clientName," ",cl.Surname) as Client,concat(user.Name," ", user.Surname) as Employee,DATEDIFF(cr.stayEndDate, cr.stayStartDate) AS DateDiff,rt.price from clientroom as cr, client as cl,room,roomtype as rt,user where cr.clientID=cl.clientID and cr.RoomID = room.RoomID and room.typeID = rt.typeID and cr.employeeID=user.employeeID');
+
+        $content = $this->db->resultset();
+        return $content;
+    }
+
+    function editReservation($data, $clientID){
+
+        $this->db->query('Update clientroom set stayStartDate = :stayStartDate ,stayEndDate = :stayEndDate,clientID = :clientID, RoomID = :RoomID, employeeID = :employeeID where requestID = :requestID');
+        $this->db->bind(':stayStartDate', $data['stayStartDate']);
+        $this->db->bind(':stayEndDate', $data['stayEndDate']);
+        $this->db->bind(':clientID',$clientID);
+        $this->db->bind(':RoomID', $data['RoomID']);
+        $this->db->bind(':employeeID', $_SESSION['user_id']);
+        $this->db->bind(':requestID', $data['requestID']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function deleteReservation($requestID){
+        $this->db->query('Delete from clientroom where requestID = :requestID');
+        $this->db->bind(':requestID', $requestID);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    function getClientID($data){
+        $this->db->query("SELECT clientID FROM client WHERE clientName =:clientName AND Surname =:Surname");
+        $this->db->bind(':clientName', $data['clientName']);
+        $this->db->bind(':Surname', $data['Surname']);
+        $results = $this->db->single();
+        return $results;
+
+    }
     // function getClientR($data){
     //     $this->db->query("SELECT * FROM client WHERE clientName like %:clientName%");
     //     $this->db->bind(':clientName', $data['clientName']);
