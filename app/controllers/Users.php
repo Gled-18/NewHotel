@@ -87,6 +87,8 @@ class Users extends Controller
         }
         else if($_SESSION['user_role'] == 'rs_manager') {
             redirect ('users/rs_manager');
+        }else if($_SESSION['user_role'] == 'waiter') {
+            redirect ('users/waiter');
         }
 
     }
