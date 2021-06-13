@@ -19,6 +19,10 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rec/">Manage</a>
       </li>
+      <?php elseif($_SESSION['user_role'] == 'rs_manager') : ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rs_manager/">Manage</a>
+      </li>
       <?php endif; ?>
       <li class="nav-item">
                     <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>

@@ -57,8 +57,7 @@ class Room
         }
     }
 
-    public function 
-   RoomType(){
+    public function RoomType(){
         $this->db->query("Select * from roomType");
 
         $content = $this->db->resultset();
