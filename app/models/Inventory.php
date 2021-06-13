@@ -75,16 +75,24 @@
     }
 
     ///LIMIT 0 , 10
+    //"SELECT *FROM alphabet LIMIT " . $page_first_result . ',' . $results_per_page;
     public function showTransactionLimited(){
       $this->db->query('SELECT * FROM managesupplies ORDER BY transactionID DESC LIMIT 0 , 10');
+      // $this->db->bind(':page_first_result', $page_first_result); 
+      // $this->db->bind(':results_per_page', $results_per_page); 
       $results = $this->db->resultSet();
       return $results;
     }
     public function showTransaction(){
-      $this->db->query('SELECT * FROM managesupplies ORDER BY transactionID DESC');
+      $this->db->query('SELECT * FROM managesupplies ORDER BY transactionID');
       $results = $this->db->resultSet();
       return $results;
     }
 
+    // public function getNumTransaction(){
+    //   $this->db->query('SELECT COUNT(*) FROM managesupplies');
+    //   $results = $this->db->resultSet();
+    //   return $results;
+    // }
     
   }

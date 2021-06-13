@@ -1,33 +1,24 @@
-<?php require APPROOT . '/views/inc/header.php'?>
-<?php require APPROOT . '/views/inc/navbar.php'?>
-
-<div class="input-group rounded">
-
-  </span>
-</div>
-<table class="table table-striped ">
-    <thead>
-      <tr>
-        <th>Transaction ID</th>
-        <th>Product Name</th>
-        <th>Employee ID</th>
-        <th>Date</th>
-        <th>Quantity</th>
-        <th>Cost</th>
-        <th>
-          <a href="<?php echo URLROOT; ?>/users/addInventory">
-            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/app/assets/user-plus-solid.svg"); ?>
-            </button>
-          </a>
-        </th>
-      </tr>
-    </thead>
-    <?php foreach ($data['transactions'] as $transacion) : ?>
-    <?php $var1 = $transacion->Quantity; ?>
-    <?php $var2 = $transacion->purchasePrice; ?>
-    <?php $var1 = $var1 + 0; ?>
-    <?php $var2 = $var2 + 0; ?>
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/navbar.php'; ?>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+            <th>Transaction ID</th>
+            <th>Product Name</th>
+            <th>Employee ID</th>
+            <th>Date</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($data['transactions'] as $transacion) : ?>
+        <?php $var1 = $transacion->Quantity; ?>
+        <?php $var2 = $transacion->purchasePrice; ?>
+        <?php $var1 = $var1 + 0; ?>
+        <?php $var2 = $var2 + 0; ?>
+       <?php $var2 = $var2 + 0; ?>
       <tr>
         <td><?php echo $transacion->transactionID; ?></td>
         <td><?php echo $transacion->productName; ?></td>
@@ -44,17 +35,46 @@
         <!-- <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php //echo $user->employeeID; ?>" class="btn btn-warning">Edit</a></td> -->
         <!-- <td><a href="<?php echo URLROOT; ?>/users/deleteUser/<?php //echo $user->employeeID; ?>" class="btn btn-danger">Remove</a></td> -->
       </tr>
-    <?php endforeach; ?>
-  </table>
+      <?php endforeach; ?>
+            <!-- <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Donna Snider</td>
+                <td>Customer Support</td>
+                <td>New York</td>
+                <td>27</td>
+                <td>2011/01/25</td>
+                <td>$112,000</td>
+            </tr> -->
+        </tbody>
+        </table>
+        <!-- <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot> -->
 
-  <!-- <a href="users/transaction" class="previous round">Show All Transactions</a> -->
-  <form action="transactions" method ='post'>
-          <input type="submit" value="Show All Transactions">
-  </form>
-  <a href="<?php echo URLROOT?>/users/transactions">Show Less</a>
-</div>
 
-
-
-
-<?php require APPROOT . '/views/inc/footer.php'?>
+        <br>
+        <br>
+        <br>
+        <?php require APPROOT . '/views/inc/footer.php'; ?>
