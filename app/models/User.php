@@ -127,6 +127,13 @@ class User
         return $result;
 
     }
+    function checkClient($data){
+        $this->db->query('SELECT * from client WHERE clientName =:clientName AND Surname =:Surname');
+        $this->db->bind(':clientName', $data['clientName']);
+        $this->db->bind(':Surname', $data['Surname']);
+        $result =$this->db->single();
+        return $result;
+    }
     function addNewClientR($data){
         $this->db->query('INSERT INTO client(TimeOfRegs, DateOfRegs, clientName, Surname, employeeID) VALUES(CURTIME(), CURDATE(),:clientName, :Surname, :employeeID)');
         $this->db->bind(':clientName', $data['clientName']);
