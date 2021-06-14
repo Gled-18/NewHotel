@@ -110,6 +110,7 @@
                 </div>
             </div>
 
+
             <div class="col">
                 <div class="card rounded border border-dark" >
                     <div class="card-body">
@@ -137,6 +138,10 @@
             </div>
 
         </div>
+        </div>
+   
+    </div>
+
 
     </main>
 

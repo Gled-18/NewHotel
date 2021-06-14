@@ -3,23 +3,35 @@
 <form action="<?php echo URLROOT . '/users/addUser' ?>" method="post">
   <div class="form-group">
     <label for="formGroupExampleInput">Name</label>
-    <input type="text" name="Name" value="<?php echo $data['name'] ?>" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
+
+    <input type="text" name="Name" value="<?php echo $data['name'] ?>" id="formGroupExampleInput" placeholder="Enter Name" class="form-control form-control-lg
+    <?php echo (!empty($data['name_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['name'] ?>">
+    <span class="invalid-feedback"><?php echo $data['name_error'] ?></span>
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">Surname</label>
-    <input type="text" name="Surname" value="<?php echo $data['surname'] ?>" class="form-control" id="formGroupExampleInput" placeholder="Enter Surname">
+    <input type="text" name="Surname" value="<?php echo $data['surname'] ?>" id="formGroupExampleInput" placeholder="Enter Surname" class="form-control form-control-lg>
+    <?php echo (!empty($data['surname_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['surname'] ?>">
+    <span class="invalid-feedback"><?php echo $data['surname_error'] ?></span>
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">Phone No</label>
-    <input type="text" name="PhoneNo" value="<?php echo $data['phoneNo'] ?>" class="form-control" id="formGroupExampleInput" placeholder="">
+    <input type="text" name="PhoneNo" value="<?php echo $data['phoneNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control form-control-lg>
+    <?php echo (!empty($data['phoneNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['phoneNo'] ?>">
+    <span class="invalid-feedback"><?php echo $data['phoneNo_error'] ?></span>
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput">Street No</label>
-    <input type="text" name="StreetNo" value="<?php echo $data['streetNo'] ?>" class="form-control" id="formGroupExampleInput" placeholder="">
+    <input type="text" name="StreetNo" value="<?php echo $data['streetNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control form-control-lg>
+    <?php echo (!empty($data['streetNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['streetNo'] ?>">
+    <span class="invalid-feedback"><?php echo $data['streetNo_error'] ?></span>
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput">Apartament NO No</label>
-    <input type="text" name="ApartamentNo" value="<?php echo $data['apartamentNo'] ?>" class="form-control" id="formGroupExampleInput" placeholder="">
+    <label for="formGroupExampleInput">Apartament No</label>
+    <input type="text" name="ApartamentNo" value="<?php echo $data['apartamentNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control form-control-lg>
+    <?php echo (!empty($data['apartamentNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['apartamentNo'] ?>">
+    <span class="invalid-feedback"><?php echo $data['apartamentNo_error'] ?></span>
+
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>
@@ -38,16 +50,23 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="Email" value="<?php echo $data['email'] ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+    <input type="email" name="Email" value="<?php echo $data['email'] ?>" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" class="form-control form-control-lg
+                        <?php echo (!empty($data['email_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['email'] ?>">
+    <span class="invalid-feedback"><?php echo $data['email_error'] ?></span>
 
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="Password" value="<?php echo $data['password'] ?>" class="form-control" id="exampleInputPassword1" placeholder="">
+    <input type="password" name="Password" value="<?php echo $data['password'] ?>" id="exampleInputPassword1" placeholder="" class="form-control form-control-lg
+                        <?php echo (!empty($data['password_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['password'] ?>">
+    <span class="invalid-feedback"><?php echo $data['password_error'] ?></span>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Confirm Password</label>
-    <input type="password" name="confirm_Password" value="<?php echo $data['confirm_password'] ?>" class="form-control" id="exampleInputPassword1" placeholder="">
+    <input type="password" name="confirm_Password" value="<?php echo $data['confirm_password'] ?>" id="exampleInputPassword1" placeholder="" class="form-control form-control-lg
+                        <?php echo (!empty($data['confirm_password_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['confirm_password'] ?>">
+    <span class="invalid-feedback"><?php echo $data['confirm_password_error'] ?></span>
+
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

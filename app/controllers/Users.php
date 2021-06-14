@@ -1,5 +1,5 @@
 <?php
-
+// error_reporting(0); 
 class Users extends Controller
 {
     public function __construct()
@@ -263,6 +263,24 @@ class Users extends Controller
                 'clientName_err' => '',
                 'Surname_err' => ''
             ];
+            if(empty($data['clientName'])){
+                $data['clientName_err'] = 'Please enter a name';
+            }elseif (!ctype_alpha($data['clientName'])) {
+                $data['clientName_err'] = 'Name is not valid';
+            }
+            if(empty($data['Surname'])){
+                $data['Surname_err'] = 'Please enter a Surname';
+            }elseif (!ctype_alpha($data['Surname'])) {
+                $data['Surname_err'] = 'Surname is not valid';
+            }
+            $check_client = $this->userModel->checkClient($data);
+
+
+            if( !empty($check_client) ){
+                //$data['clientName_err'] = 'Client already registered';
+                $data['Surname_err'] = 'Client already registered';
+            }
+
             if (empty($data['clientName_err']) && empty($data['Surname_err'])) {
                 if ($this->userModel->addNewClientR($data)) {
                     flash('register_success', 'User is registered.');
@@ -270,6 +288,8 @@ class Users extends Controller
                 }else{
                     echo "Error";
                 }
+            }else{
+                $this->view('users/addClient', $data);
             }
         }else{
             $data = [
@@ -371,18 +391,81 @@ class Users extends Controller
                 "clientName" =>trim($_POST['clientName']),
                 "stayStartDate" =>trim($_POST['stayStartDate']),
                "stayEndDate" => trim($_POST['stayEndDate']),
-                "Surname" => trim($_POST['Surname'])
+                "Surname" => trim($_POST['Surname']),
+                'stayStartDate_err' => '',
+                'stayEndDate_err' => '',
+                "clientName_err" => '',
+                "Surname_err" => ''
             ];
+
+            if(empty($data["RoomsIDNO"])){
+                $data["RoomsIDNO"] = $var;
+            }
+            // $var2 = $this->userModel->getClient($data);
+
+            // $id_to_use = $var2[0]->clientID;
+            // $id_to_use = $id_to_use + 0;
+            //validate room id
+            // if(empty($data["RoomsIDNO"]) || $data["RoomsIDNO"] ==='val'){
+            //     $data["RoomsIDNO_err"] = 'Please select a room';
+            //     $data["RoomsIDNO"] = $var;
+            // }
+
+            //validate name
+            if(empty($data['clientName'])){
+                $data['clientName_err'] = 'Please enter a name';
+            }elseif (!ctype_alpha($data['clientName'])) {
+                $data['clientName_err'] = 'Name is not valid';
+            }
+
+            //validate surname
+            if(empty($data['Surname'])){
+                $data['Surname_err'] = 'Please enter a Surname';
+            }elseif (!ctype_alpha($data['Surname'])) {
+                $data['Surname_err'] = 'Surname is not valid';
+            }
+
+            if(!empty($data['Surname']) && !empty($data['clientName'])){
             $var2 = $this->userModel->getClient($data);
 
             $id_to_use = $var2[0]->clientID;
             $id_to_use = $id_to_use + 0;
-            if(!empty($var2)){
+            }
+
+            $check_client = $this->userModel->checkClient($data);
+
+
+            if(empty($check_client) ){
+                //$data['clientName_err'] = 'Client already registered';
+                $data['Surname_err'] = 'Client does not exist';
+            }
+
+            if(empty($data['stayStartDate'])){
+                $data['stayStartDate_err'] = "Please enter start date";
+            }
+            if(empty($data['stayEndDate'])){
+                $data['stayEndDate_err'] = "Please enter end date";
+            }
+
+            if(strtotime($data['stayStartDate']) > strtotime($data['stayEndDate'])){
+                $data['stayEndDate_err'] = "Please enter a later date";
+            }
+            
+            
+            
+            
+      
+              if(empty($data['clientName_err']) && empty($data['surname_err']) && empty($data['stayStartDate_er']) && empty($data['stayEndDate_err'])){
+                  if(!empty($var2)){
                 if($this->userModel->addNewReservationR($data, (int)$id_to_use)){
                     redirect("users/reservations");
                 }
+            }}else{
+                $this->view('users/addReservation',$data);
             }
-        }else{
+        
+        }
+        else{
 
             $data = [
                 "RoomsIDNO" => $var,
@@ -390,6 +473,10 @@ class Users extends Controller
                 "stayStartDate" => "",
                 "stayEndDate" => "",
                 "Surname" => "",
+                'stayStartDate_err' => '',
+                'stayEndDate' => '',
+                "clientName_err" => '',
+                "Surname_err" => ''
             ];
             $this->view('users/addReservation',$data);
         }
@@ -517,8 +604,65 @@ class Users extends Controller
             ];
 
             //need some validation here
+            //validate email
+            if (empty($data['email'])) {
+                $data['email_error'] = 'Please enter email';
+            } else {
+                //check email
+                if ($this->userModel->findUserByEmail($data['email'])) {
+                    $data['email_error'] = 'Email is already used';
+                }
+            }
+
+            //validate name
+            if (empty($data['name'])) {
+                $data['name_error'] = 'Please enter name';
+            }
+            //validate surname
+            if (empty($data['surname'])) {
+                $data['surname_error'] = 'Please enter Surname';
+            }
+
+            //validate password
+            if (empty($data['password'])) {
+                $data['password_error'] = 'Please enter password';
+            } elseif (strlen($data['password']) < 6) {
+                $data['password_error'] = 'Password must be at least 6 characters';
+            }
+            //validate phone no
+            if(empty($data['phoneNo'])){
+                $data['phoneNo_error'] = 'Please enter phone number!';
+            }elseif(!is_numeric($data['phoneNo'])){
+                $data['phoneNo_error'] = 'Please enter only numbers!';
+            }
+
+
+            //validate address
+            if(empty($data['apartamentNo'])){
+                $data['apartamentNo_error'] = 'Please enter Apartament Number ';
+            }
+
+            //validate streetNo
+            if(empty($data['streetNo'])){
+                $data['streetNo_error'] = 'Please enter Street Number ';
+            }
+
+
+
+            //validate confirm_password
+            if (empty($data['confirm_password'])) {
+                $data['confirm_password_error'] = 'Please confirm password';
+            } else {
+                if ($data['password'] != $data['confirm_password']) {
+                    $data['confirm_password_error'] = 'Password do not match';
+                }
+            }
+
+
+
 
             //make sure there are empty error than...
+            if (empty($data['email_error']) && empty($data['surname_error']) && empty($data['name_error']) && empty($data['password_error']) && empty($data['confirm_password_error']) && empty($data['apartamentNo_error']) && empty($data['phoneNo_error']) && empty( $data['streetNo_error'])) {
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
             if ($this->userModel->addNewUser($data)) {
                 flash('register_success', 'User is registered.');
@@ -526,7 +670,11 @@ class Users extends Controller
             } else {
                 die("Smth Went wrong");
             }
-        } else {
+        }else {
+            //load view with errors
+            $this->view('/users/addUser', $data);
+        }
+    }else {
             //initialize data
             //`employeeID`, `Name`, `Surname`, `PhoneNo`, `StreetNo`, `ApartamentNo`, `Role`, `Descrition`, `Email`, `Password`
             $data = [
@@ -566,25 +714,70 @@ class Users extends Controller
                 'apartamentNo' => trim($_POST['ApartamentNo']),
                 'role' => trim($_POST['Role']),
                 'description' => trim($_POST['Descrition']),
-                'email' => trim($_POST['Email']),
+                // 'email' => trim($_POST['Email']),
                 //'password' => trim($_POST['Password']),
                 //'confirm_password' => trim($_POST['confirm_Password']),
                 'name_error' => '',
+                'surname_error' => '',
                 'phoneNo_error' => '',
                 'streetNo_error' => '',
                 'apartamentNo_error' => '',
-                'email_error' => '',
+                // 'email_error' => '',
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
 
+            //validate email
+            if (empty($data['email'])) {
+                $data['email_error'] = 'Please enter email';
+            } 
+
+            //validate name
+            if (empty($data['name'])) {
+                $data['name_error'] = 'Please enter name';
+            }
+            //validate surname
+            if (empty($data['surname'])) {
+                $data['surname_error'] = 'Please enter Surname';
+            }
+
+            // //validate password
+            // if (empty($data['password'])) {
+            //     $data['password_error'] = 'Please enter password';
+            // } elseif (strlen($data['password']) < 6) {
+            //     $data['password_error'] = 'Password must be at least 6 characters';
+            // }
+            //validate phone no
+            if(empty($data['phoneNo'])){
+                $data['phoneNo_error'] = 'Please enter phone number!';
+            }elseif(!is_numeric($data['phoneNo'])){
+                $data['phoneNo_error'] = 'Please enter only numbers!';
+            }
+
+
+            //validate address
+            if(empty($data['apartamentNo'])){
+                $data['apartamentNo_error'] = 'Please enter Apartament Number ';
+            }
+
+            //validate streetNo
+            if(empty($data['streetNo'])){
+                $data['streetNo_error'] = 'Please enter Street Number ';
+            }elseif(!is_numeric($data['streetNo'])){
+                $data['streetNo_error'] = 'Please enter only numbers!';
+            }
+            
             //make sure there is not an error (do not forget if)
+            if ( empty($data['surname_error']) && empty($data['name_error']) && empty($data['confirm_password_error']) && empty($data['apartamentNo_error']) && empty($data['phoneNo_error']) && empty( $data['streetNo_error'])) {
             if ($this->userModel->editUserM($data)) {
                 flash('post_message', 'User Updated');
                 redirect('users/manageUsers');
             } else {
                 die('Something went wrong');
             }
+        }else{
+            $this->view('/users/editUser', $data);
+        }
         } else {
             //get excisting user from model
             $user = $this->userModel->getUserById($id);
