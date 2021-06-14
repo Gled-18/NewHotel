@@ -3,11 +3,17 @@
 <form action="<?php echo URLROOT.'/rooms/addRoom'?>" method="post">
     <div class="form-group">
         <label for="formGroupExampleInput">Room Number</label>
-        <input type="text" name="RoomNo" value="<?php echo $data['RoomNo']?>" class="form-control" id="formGroupExampleInput" placeholder="Enter Room Number">
+        <input type="text" name="RoomNo" value="<?php echo $data['RoomNo']?>" id="formGroupExampleInput" placeholder="Enter Room Number" class="form-control form-control-lg
+                        <?php echo (!empty($data['RoomNo_error'])) ? 'is-invalid': ''?>"
+                               value="<?php echo $data['RoomNo']?>">
+                        <span class="invalid-feedback"><?php echo $data['RoomNo_error']?></span>
     </div>
     <div class="form-group">
         <label for="formGroupExampleInput">Floor</label>
-        <input type="text" name="Floor" value="<?php echo $data['Floor']?>" class="form-control" id="formGroupExampleInput" placeholder="Enter Floor">
+        <input type="text" name="Floor" value="<?php echo $data['Floor']?>"  id="formGroupExampleInput" placeholder="Enter Floor" class="form-control form-control-lg
+                        <?php echo (!empty($data['Floor_error'])) ? 'is-invalid': ''?>"
+                               value="<?php echo $data['Floor']?>">
+                        <span class="invalid-feedback"><?php echo $data['Floor_error']?></span>
     </div>
 
     <div class="form-group">

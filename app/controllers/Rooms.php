@@ -27,17 +27,38 @@ class Rooms extends Controller
 
                 'RoomNo_error' => '',
                 'Floor_error' => '',
-                'Status_error' => '',
-                'typeID_error' => ''
+                // 'Status_error' => '',
+                // 'typeID_error' => ''
             ];
             // Validation
-            if ($this->roomModel->addRoom($data)) {
-                flash('register_success', 'Room is registered.');
-                redirect('rooms/manageRooms');
-            } else {
-                die("Smth Went wrong");
+
+
+            /// validate room no
+            if (empty($data['RoomNo'])) {
+                $data['RoomNo_error'] = 'Please enter number of room';
+            }elseif(!is_numeric($data['RoomNo_error'])){
+                $data['RoomNo_error'] = 'Please enter only numbers';
             }
 
+            //validate floor
+            if (empty($data['Floor'])) {
+                $data['Floor_error'] = 'Please enter floor number';
+            }elseif(!is_numeric($data['Floor'])){
+                $data['Floor_error'] = 'Please enter only numbers';
+            }
+
+
+            if(empty($data['RoomNo_error']) && empty($data['Floor_error'])){
+                if ($this->roomModel->addRoom($data)) {
+                    flash('register_success', 'Room is registered.');
+                    redirect('rooms/manageRooms');
+                } else {
+                    die("Smth Went wrong");
+                }  
+            }else{
+                $this->view('/rooms/addRoom', $data);
+            }
+            
         } else {
             $content = $this->roomModel->getRoomType();
             $data = [
@@ -63,8 +84,8 @@ class Rooms extends Controller
 
                 'RoomNo_error' => '',
                 'Floor_error' => '',
-                'Status_error' => '',
-                'typeID_error' => ''
+                // 'Status_error' => '',
+                // 'typeID_error' => ''
             ];
             // Validation
 

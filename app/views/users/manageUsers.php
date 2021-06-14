@@ -11,7 +11,7 @@
         <th>Surname</th>
         <th>Role</th>
         <th>
-          <a href="<?php echo URLROOT; ?>/users/clients/addUser">
+          <a href="<?php echo URLROOT; ?>/users/addUser">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
               <i class="fas fa-user-plus"></i>
             </button>
@@ -26,8 +26,8 @@
         <td><?php echo $user->Name; ?></td>
         <td><?php echo $user->Surname; ?></td>
         <td><?php echo $user->Role; ?></td>
-        <td><a href="<?php echo URLROOT; ?>/users/clients/editUser/<?php echo $user->employeeID; ?>" class="btn btn-warning">Edit</a></td>
-        <td><a href="<?php echo URLROOT; ?>/users/clients/deleteUser/<?php echo $user->employeeID; ?>" class="btn btn-danger">Delete</a></td>
+        <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php echo $user->employeeID; ?>" class="btn btn-warning">Edit</a></td>
+        <td><a href="<?php echo URLROOT; ?>/users/deleteUser/<?php echo $user->employeeID; ?>" class="btn btn-danger">Delete</a></td>
       </tr>
     <?php endforeach; ?>
   </table>
