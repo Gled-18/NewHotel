@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+
 <div>
 
   <table class="table table-striped ">
@@ -12,7 +13,7 @@
         <th>
           <a href="<?php echo URLROOT; ?>/users/addUser">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("../app/assets/user-plus-solid.svg"); ?>
+              <i class="fas fa-user-plus"></i>
             </button>
           </a>
         </th>

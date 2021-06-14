@@ -51,7 +51,6 @@
     
 </main>
 
-
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 
 <script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>

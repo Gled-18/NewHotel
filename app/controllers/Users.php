@@ -554,7 +554,6 @@ class Users extends Controller
         }
     }
 
-
     public function editUser($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

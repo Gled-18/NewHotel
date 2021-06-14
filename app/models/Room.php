@@ -97,4 +97,20 @@ class Room
             return false;
         }
     }
+
+
+
+//---------------ELION TEST---------------------
+
+public function getFreeRooms($startDate, $endDate){
+    $this->db->query('SELECT * FROM Room WHERE endReservationDt NOT BETWEEN :startDate AND :endDate');
+    // $this->db->bind(':RoomID', $RoomID);
+
+    $content = $this->db->resultset();
+    return $content;
+
+
+}
+
+
 }

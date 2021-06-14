@@ -17,7 +17,7 @@
                 <th>
                     <a href="<?php echo URLROOT; ?>/users/addReservation">
                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add Reservations" data-delay="0">
-                            <?php echo file_get_contents("../app/assets/user-plus-solid.svg"); ?>
+                        <i class="fas fa-user-plus"></i>
                         </button>
                     </a>
                 </th>
