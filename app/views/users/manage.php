@@ -117,7 +117,7 @@
                             <h5 class="card-title text-left"> Manage Supplies </h5><i class="fas fa-truck-moving fa-2x" style="margin-left: auto"></i>
                         </div>
                         <p class="card-text text-left">Supply and Demand </p>
-                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
+                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary pull-down">Manage</a>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                         </div>
                         <p class="card-text text-left">Some quick example text to build on the card title and make up the bulk
                             of the card's content.</p>
-                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
+                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary ">Manage</a>
                     </div>
                 </div>
             </div>

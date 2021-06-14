@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php'?>
+<?php //require APPROOT . '/views/inc/header.php'?>
 <?php require APPROOT . '/views/inc/navbar.php'?>
 <form action="<?php echo URLROOT.'/rooms/addRoom'?>" method="post">
     <div class="form-group">

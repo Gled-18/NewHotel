@@ -14,11 +14,11 @@ function delete_row(rowno)
 // </script>
 
 
-	$(function() {
-  $(document).ready(function() {
-    $('#example').DataTable();
-  });
-});
+// 	$(function() {
+//   $(document).ready(function() {
+//     $('#example').DataTable();
+//   });
+// });
 
 	
 
