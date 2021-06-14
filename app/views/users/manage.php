@@ -114,10 +114,10 @@
                 <div class="card rounded border border-dark" >
                     <div class="card-body">
                         <div style="display: flex;">
-                            <h5 class="card-title text-left"> Manage Supplies </h5><i class="fas fa-truck-moving fa-2x" style="margin-left: auto"></i>
+                            <h5 class="card-title text-left"> Manage Waiter </h5><i class="fas fa-truck-moving fa-2x" style="margin-left: auto"></i>
                         </div>
                         <p class="card-text text-left">Supply and Demand </p>
-                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
+                        <a href="<?php echo URLROOT; ?>/users/manageWaiters" class="btn btn-primary">Manage</a>
                     </div>
                 </div>
             </div>

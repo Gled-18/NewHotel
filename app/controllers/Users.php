@@ -624,4 +624,11 @@ class Users extends Controller
             $this->view('users/deleteUser', $data);
         }
     }
+    public function manageWaiters(){
+        $items = $this->inventoryModel->show();
+        $data = [
+            'items' => $items
+        ];
+        $this->view('users/manageWaiters', $data);
+    }
 }
