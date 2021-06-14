@@ -2,13 +2,13 @@
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <a href="<?php echo URLROOT; ?>/users/addInventory">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/app/assets/user-plus-solid.svg"); ?>
+              <?php echo file_get_contents("../app/assets/user-plus-solid.svg"); ?>
             </button>
           </a>
           
           <a href="<?php echo URLROOT; ?>/users/addInventory">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/app/assets/user-minus-solid.svg"); ?>
+              <?php echo file_get_contents("../app/assets/user-minus-solid.svg"); ?>
             </button>
           </a>
 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -21,7 +21,7 @@
         <!-- <th>
           <a href="<?php echo URLROOT; ?>/users/addInventory">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
-              <?php echo file_get_contents("C:/xampp/htdocs/NewHotel/app/assets/user-plus-solid.svg"); ?>
+              <?php echo file_get_contents("../app/assets/user-plus-solid.svg"); ?>
             </button>
           </a>
         </th> -->
