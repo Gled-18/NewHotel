@@ -418,6 +418,10 @@
                 vertical-align: middle;
             }
 
+            .selected {
+                background-color: #ABABAB;
+            }
+
         </style>
     </head>
     <body>
@@ -451,7 +455,7 @@
                     <div class="card-body p-5 bg-white rounded">
                         <div class="table-responsive">
                             <form action="#" method="post">
-                            <table id="example" style="width:100%" class="table table-striped table-bordered">
+                            <table id="example" style="width:100%" class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th>Select</th>
@@ -466,7 +470,7 @@
                                 <tbody>
 
                                     <?php foreach ($data['items'] as $items) : ?>
-                                        <tr>
+                                        <tr class="js-row">
                                             <td><label class="container1">
                                                     <input id="chkb" type="checkbox" name="id[]"
                                                            value="<?php echo $items->productID; ?>">
@@ -474,7 +478,7 @@
                                                 </label></td>
                                             <td><?php echo $items->productName; ?></td>
                                             <td>
-                                                <div class="number">
+                                                <div name="quantity[]" class="number">
                                                     <span class="minus">-</span>
                                                     <input type="text" value="1""/>
                                                     <span class="plus">+</span>
@@ -509,6 +513,7 @@
 
             foreach ($_POST['id'] as $value) {
                 echo "value : " . $value . '<br/>';
+
             }
 
         }
@@ -522,6 +527,18 @@
                 $('#example').DataTable();
             });
         });
+
+        let tableRows = document.querySelectorAll('.js-row');
+
+        for(let i=0; i<tableRows.length; i++){
+            tableRows[i].onclick = function() {
+                for(let j=0; j<tableRows.length; j++){
+                    //if(i == j) continue;
+                    if(tableRows[j].classList.contains('selected')) tableRows[j].classList.remove('selected');
+                }
+                if(!tableRows[i].classList.contains('selected')) tableRows[i].classList.add('selected');
+            }
+        }
     </script>
 
     <script>
@@ -558,20 +575,14 @@
                     $nrinput.val(count);
 
                     $nrinput.change();
-                    let a = document.getElementById("quantity");
-                    alert("a=" +a);
-                    if (a < count){
-                    }
+
                     return false;
                 });
                 $('.plus').click(function () {
                     var $nrinput = $(this).parent().find('input');
                     var count =parseInt($nrinput.val());
                     $nrinput.change();
-                    let a = document.getElementById("quantity");
-                    alert("a=" +a);
-                    if (a > count){
-                    }
+
                     return false;
                 });
         });

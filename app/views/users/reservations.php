@@ -61,7 +61,7 @@
             </div>
             <div class="modal-body container-fluid">
 
-                <form action="<?php echo URLROOT; ?>/users/reservations/" method="POST">
+                <form action="" method="POST">
                     <div class="container">
                         <div class="row ">
                             <label for="datepickerModal" class="col"><b>Do you want to set the reservation as complete?</b> </label>
@@ -78,3 +78,18 @@
     </div>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php
+if (isset($_POST['submit'])) {
+
+    if (!empty($_POST['id'])) {
+
+        foreach ($_POST['id'] as $value) {
+            echo "value : " . $value . '<br/>';
+
+        }
+
+    }
+
+}
+
+;?>
