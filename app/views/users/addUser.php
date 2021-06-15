@@ -31,7 +31,6 @@
     <input type="text" name="ApartamentNo" value="<?php echo $data['apartamentNo']?>" id="formGroupExampleInput" placeholder="" class="form-control form-control-lg>
     <?php echo (!empty($data['apartamentNo_error'])) ? 'is-invalid': ''?>" value="<?php echo $data['apartamentNo']?>">
     <span class="invalid-feedback"><?php echo $data['apartamentNo_error']?></span>
->>>>>>> Stashed changes
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Example select</label>

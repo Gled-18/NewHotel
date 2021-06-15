@@ -453,7 +453,7 @@ class Users extends Controller
                 $data['stayEndDate_err'] = "Please enter end date";
             }
 
-            if(strtotime($data['stayStartDate']) > strtotime($data['stayEndDate'])){
+            if(strtotime($data['stayStartDate']) >= strtotime($data['stayEndDate'])){
                 $data['stayEndDate_err'] = "Please enter a later date";
             }
             

@@ -1,5 +1,4 @@
-<?php //require APPROOT . '/views/inc/header.php'; 
-?>
+<?php //require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 
 <!DOCTYPE html>
@@ -22,6 +21,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
     <style>
         body {
             margin-bottom: 10px;
@@ -111,19 +113,19 @@
             </div>
 
 
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card rounded border border-dark" >
                     <div class="card-body">
                         <div style="display: flex;">
                             <h5 class="card-title text-left"> Manage Supplies </h5><i class="fas fa-truck-moving fa-2x" style="margin-left: auto"></i>
                         </div>
                         <p class="card-text text-left">Supply and Demand </p>
-                        <a href="<?php echo URLROOT; ?>/users/manageWaiters" class="btn btn-primary">Manage</a>
+                        <a href="<?php# echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card rounded border border-dark" >
                     <div class="card-body">
 
@@ -132,10 +134,10 @@
                         </div>
                         <p class="card-text text-left">Some quick example text to build on the card title and make up the bulk
                             of the card's content.</p>
-                        <a href="<?php echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
+                        <a href="<?php #echo URLROOT; ?>/supplies/index" class="btn btn-primary">Manage</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
         </div>
