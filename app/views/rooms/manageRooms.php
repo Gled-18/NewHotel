@@ -12,8 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-
 
 </head>
 
@@ -21,8 +19,9 @@
 
 
     <div>
-        <table id="tableData">
-            <tr>
+        <table id="tableData " class="table table-striped table-hover">
+            <thead>
+                <!-- class="thead-dark" -->
                 <th>RoomNo &emsp;</th>
                 <th>Floor &emsp;</th>
                 <th>Status &emsp;</th>
@@ -30,13 +29,15 @@
                 <th>Price &emsp;</th>
                 <th>
                     <a href="<?php echo URLROOT; ?>/rooms/addRoom">
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add Room" data-delay="0">
                             <i class="fas fa-user-plus"></i>
                         </button>
                     </a>
                 </th>
+                <th></th>
+                
 
-            </tr>
+            </thead>
             <?php foreach ($data['Room'] as $Room) : ?>
                 <tr>
                     <td><?php echo $Room->RoomNo; ?></td>
@@ -45,8 +46,10 @@
                     <td><?php echo $Room->typeName; ?></td>
                     <td><?php echo $Room->price; ?></td>
 
-                    <td><a href="<?php echo URLROOT; ?>/rooms/editRoom/<?php echo $Room->RoomID; ?>">Edit</a></td>
-                    <td><a href="<?php echo URLROOT; ?>/rooms/deleteRoom/<?php echo $Room->RoomID; ?>">Delete</a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/editRoom/<?php echo $Room->RoomID; ?>" class="btn btn-warning"><i class="far fa-edit"></i><!-- Edit --></a></td>
+                    <td><a href="<?php echo URLROOT; ?>/rooms/deleteRoom/<?php echo $Room->RoomID; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i><!-- Delete --></a></td>
+
+
                 </tr>
             <?php endforeach; ?>
 
@@ -54,15 +57,19 @@
 
 
 
-        <!-- script qe mbush tabelen me dhoma nga databaza pasi ngarkohet htmlja -->
-
+        
     </div>
 
-    <script>
+    <!-- kjo sben pune  -->
+    <!-- script qe mbush tabelen me dhoma nga databaza pasi ngarkohet htmlja -->
+
+    <!-- <script>
         // kur html ngarkohet
         $(document).ready(function() {
             // shko ne allRooms.php me sill liste me krejta dhomat nga databaza.
-            $.post("allRooms.php", {/**ska data */}, function(data, status) {
+            $.post("allRooms.php", {
+                /**ska data */
+            }, function(data, status) {
                 console.log("Response: " + data);
 
                 // responsi kthen liste me dhoma 
@@ -95,7 +102,7 @@
 
 
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

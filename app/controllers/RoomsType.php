@@ -33,13 +33,25 @@ class RoomsType extends Controller
                 'price_error' => ''
             ];
             // Validation
+            if(empty($data['typeName'])){
+                $data['typeName_error'] = 'Please enter type name';
+            }
 
+            //price 
+            if(empty($data['price'])){
+                $data['price_error'] = 'Please enter price';
+            }elseif(!is_numeric($data['price'])){
+                $data['price_error'] = 'Price must be a number';
+            }
 
+            if(empty($data['typeName_error']) && empty($data['price_error'])){
             if ($this->roomModel->addNewRoomType($data)) {
                 flash('register_success', 'RoomType Type is registered.');
                 redirect('roomsType/roomType');
             } else {
                 die("Smth Went wrong");
+            }}else{
+                $this->view('roomsType/addRoomType', $data); 
             }
 
         } else {
@@ -64,7 +76,21 @@ class RoomsType extends Controller
                 'typeName_error' => '',
                 'price_error' => ''
             ];
-            print_r($data);
+            // print_r($data);
+
+            // Validation
+            if(empty($data['typeName'])){
+                $data['typeName_error'] = 'Please enter type name';
+            }
+
+            //price 
+            if(empty($data['price'])){
+                $data['price_error'] = 'Please enter price';
+            }elseif(!is_numeric($data['price'])){
+                $data['price_error'] = 'Price must be a number';
+            }
+
+            if(empty($data['typeName_error']) && empty($data['price_error'])){
             //make sure there is not an error (do not forget if)
             if ($this->roomModel->editType($data)) {
                 flash('post_message', 'RoomType Updated');
@@ -72,6 +98,9 @@ class RoomsType extends Controller
             } else {
                 die('Something went wrong');
             }
+        }else{
+            $this->view('roomsType/editRoomType', $data);
+        }
 
         } else {
             $roomType = $this->roomModel->getRoomTypeByID($typeID);

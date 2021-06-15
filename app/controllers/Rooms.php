@@ -6,16 +6,18 @@ class Rooms extends Controller
         $this->roomModel = $this->model('Room');
     }
 
-    public function manageRooms(){
+    public function manageRooms()
+    {
 
         $content = $this->roomModel->showRooms();
-        $data =[
+        $data = [
             'Room' => $content
         ];
         $this->view('rooms/manageRooms', $data);
     }
 
-    public function addRoom(){
+    public function addRoom()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -29,36 +31,41 @@ class Rooms extends Controller
                 'Floor_error' => '',
                 // 'Status_error' => '',
                 // 'typeID_error' => ''
+
             ];
+
+            print_r($data);
             // Validation
 
 
             /// validate room no
+            
             if (empty($data['RoomNo'])) {
                 $data['RoomNo_error'] = 'Please enter number of room';
-            }elseif(!is_numeric($data['RoomNo_error'])){
+            } elseif (!filter_var($data['RoomNo'])) { 
                 $data['RoomNo_error'] = 'Please enter only numbers';
             }
 
             //validate floor
+            
             if (empty($data['Floor'])) {
                 $data['Floor_error'] = 'Please enter floor number';
-            }elseif(!is_numeric($data['Floor'])){
+            } else
+            if (!is_numeric($data['Floor'])) {
                 $data['Floor_error'] = 'Please enter only numbers';
             }
 
 
-            if(empty($data['RoomNo_error']) && empty($data['Floor_error'])){
+            if (empty($data['RoomNo_error']) && empty($data['Floor_error'])) {
                 if ($this->roomModel->addRoom($data)) {
                     flash('register_success', 'Room is registered.');
                     redirect('rooms/manageRooms');
                 } else {
                     die("Smth Went wrong");
-                }  
-            }else{
+                }
+            } else {
                 $this->view('/rooms/addRoom', $data);
             }
-            
         } else {
             $content = $this->roomModel->getRoomType();
             $data = [
@@ -71,7 +78,8 @@ class Rooms extends Controller
         }
     }
 
-    public function editRoom($RoomID){
+    public function editRoom($RoomID)
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -96,7 +104,6 @@ class Rooms extends Controller
             } else {
                 die("Smth Went wrong");
             }
-
         } else {
             $roomType = $this->roomModel->getRoomType();
             $room = $this->roomModel->getRoomByID($RoomID);
@@ -112,7 +119,8 @@ class Rooms extends Controller
         }
     }
 
-    public function deleteRoom($RoomID){
+    public function deleteRoom($RoomID)
+    {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($this->roomModel->deleteRoom($RoomID)) {
                 flash('delete_success', 'Room is deleted.');
@@ -126,7 +134,5 @@ class Rooms extends Controller
             ];
             $this->view('rooms/deleteRoom', $data);
         }
-
-
     }
 }

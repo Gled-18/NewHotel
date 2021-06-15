@@ -447,7 +447,7 @@ class Users extends Controller
                 $data['stayEndDate_err'] = "Please enter end date";
             }
 
-            if(strtotime($data['stayStartDate']) > strtotime($data['stayEndDate'])){
+            if(strtotime($data['stayStartDate']) >= strtotime($data['stayEndDate'])){
                 $data['stayEndDate_err'] = "Please enter a later date";
             }
             
@@ -582,6 +582,7 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
             //`Name`, `Surname`, `PhoneNo`, `StreetNo`, `ApartamentNo`, `Role`, `Descrition`, `Email`, `Password`
+            
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['Name']),
@@ -602,6 +603,7 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
+            print_r($data);
 
             //need some validation here
             //validate email
@@ -672,6 +674,7 @@ class Users extends Controller
             }
         }else {
             //load view with errors
+            print_r($data);
             $this->view('/users/addUser', $data);
         }
     }else {
@@ -696,6 +699,7 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
+            print_r($data);
             $this->view('users/addUser', $data);
         }
     }

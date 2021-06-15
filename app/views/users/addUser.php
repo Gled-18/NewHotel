@@ -36,21 +36,21 @@
           <div class="form-row">
 
             <div class="form-group required col">
-              <label for="txtName" class="control-label">Name</label>
-              <input type="text" name="Name" value="<?php echo $data['name'] ?>" id="txtName" placeholder="Enter Name" class="form-control <?php echo (!empty($data['name_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['name'] ?>">
+              <label for="formGroupExampleInput" class="control-label">Name</label>
+              <input type="text" name="Name" value="<?php echo $data['name'] ?>" id="formGroupExampleInput" placeholder="Enter Name" class="form-control <?php echo (!empty($data['name_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['name'] ?>">
               <span class="invalid-feedback"><?php echo $data['name_error'] ?></span>
             </div>
 
 
             <div class="form-group required col">
-              <label for="txtSurname" class="control-label">Surname</label>
-              <input type="text" name="Surname" value="<?php echo $data['surname'] ?>" id="txtSurname" placeholder="Enter Surname" class="form-control ><?php echo (!empty($data['surname_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['surname'] ?>">
+              <label for="formGroupExampleInput" class="control-label">Surname</label>
+              <input type="text" name="Surname" value="<?php echo $data['surname'] ?>" id="formGroupExampleInput" placeholder="Enter Surname" class="form-control ><?php echo (!empty($data['surname_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['surname'] ?>">
               <span class="invalid-feedback"><?php echo $data['surname_error'] ?></span>
             </div>
 
             <div class="form-group  col">
-              <label for="txtPhoneNo">Phone No</label>
-              <input type="text" name="PhoneNo" value="<?php echo $data['phoneNo'] ?>" id="txtPhoneNo" placeholder="" class="form-control ><?php echo (!empty($data['phoneNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['phoneNo'] ?>">
+              <label for="formGroupExampleInput">Phone No</label>
+              <input type="text" name="PhoneNo" value="<?php echo $data['phoneNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control ><?php echo (!empty($data['phoneNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['phoneNo'] ?>">
               <span class="invalid-feedback"><?php echo $data['phoneNo_error'] ?></span>
             </div>
 
@@ -59,14 +59,14 @@
           <div class="form-row">
 
             <div class="form-group  col">
-              <label for="txtStreetNo">Street No</label>
-              <input type="text" name="StreetNo" value="<?php echo $data['streetNo'] ?>" id="txtStreetNo" placeholder="" class="form-control ><?php echo (!empty($data['streetNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['streetNo'] ?>">
+              <label for="formGroupExampleInput">Street No</label>
+              <input type="text" name="StreetNo" value="<?php echo $data['streetNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control ><?php echo (!empty($data['streetNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['streetNo'] ?>">
               <span class="invalid-feedback"><?php echo $data['streetNo_error'] ?></span>
             </div>
 
             <div class="form-group  col">
-              <label for="txtApartNo">Apartament No</label>
-              <input type="text" name="ApartamentNo" value="<?php echo $data['apartamentNo'] ?>" id="txtApartNo" placeholder="" class="form-control ><?php echo (!empty($data['apartamentNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['apartamentNo'] ?>">
+              <label for="formGroupExampleInput">Apartament No</label>
+              <input type="text" name="ApartamentNo" value="<?php echo $data['apartamentNo'] ?>" id="formGroupExampleInput" placeholder="" class="form-control ><?php echo (!empty($data['apartamentNo_error'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['apartamentNo'] ?>">
               <span class="invalid-feedback"><?php echo $data['apartamentNo_error'] ?></span>
 
             </div>
@@ -74,8 +74,8 @@
 
           <div class="form-row">
             <div class="form-group required col">
-              <label for="exampleFormControlSelect1" class="control-label">Role:</label>
-              <select class="form-control" id="exampleFormControlSelect1" name='Role'>
+              <label for="formGroupExampleInput" class="control-label">Role:</label>
+              <select class="form-control" id="formGroupExampleInput" name='Role'>
                 <option value='ht_manager'>Hotel Manager</option>
                 <option value='rs_manager'>Restaurant Manager</option>
                 <option value='waiter'>Waiter</option>
