@@ -14,6 +14,16 @@ class Room
 
         return $results;
     }
+    public function showFreeRooms($RoomID){
+        $this->db->query('SELECT * From Room, RoomType where Room.typeID = RoomType.typeID and Room.Status="Available " UNION  SELECT * From Room, RoomType where Room.typeID = RoomType.typeID and Room.RoomID=:RoomID');
+        $this->db->bind(':RoomID', $RoomID);
+        $results = $this->db->resultset();
+
+        return $results;
+
+    }
+
+
     public function getRoomType(){
         $this->db->query("Select * from roomType");
 

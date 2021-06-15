@@ -480,7 +480,7 @@ class Users extends Controller
                 "stayEndDate" => "",
                 "Surname" => "",
                 'stayStartDate_err' => '',
-                'stayEndDate' => '',
+                'stayEndDate_err' => '',
                 "clientName_err" => '',
                 "Surname_err" => ''
             ];
@@ -518,7 +518,7 @@ class Users extends Controller
         }else{
             $Reservation = $this->userModel->getReservationByID($requestID);
             $Client = $this->userModel->getClientByID($Reservation->clientID);
-            $Rooms = $this->roomModel->showRooms();
+            $Rooms = $this->roomModel->showFreeRooms($Reservation->RoomID);
             $data = [
                 'requestID' => $requestID,
                 'RoomID' => $Reservation->RoomID,
