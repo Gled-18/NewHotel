@@ -11,4 +11,6 @@
   define('URLROOT', 'http://localhost/NewHotel');
   // Site Name
   define('SITENAME', 'Greccia');
+
+  define('ROOT', dirname(dirname(dirname(__FILE__))));
   
