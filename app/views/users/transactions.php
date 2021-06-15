@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php //require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
