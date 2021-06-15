@@ -103,13 +103,13 @@
 
 <!-- <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="Email" value="<? php # echo $data['email']
+    <input type="email" name="Email" value="<?// php # echo $data['email']
                                             ?>" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" class="form-control form-control-lg
                                             <?php #echo (!empty($data['email_error'])) ? 'is-invalid': ''
                                             ?>"
                                                    value="<?php #echo $data['email']
                                                           ?>">
-                                            <span class="invalid-feedback"><? php # echo $data['email_error']
+                                            <span class="invalid-feedback"><? //php # echo $data['email_error']
                                                                             ?></span>
                         
                       </div> -->
