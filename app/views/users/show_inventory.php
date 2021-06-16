@@ -1,5 +1,9 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php //require APPROOT . '/views/inc/header.php'; 
+?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+<?php if($_SESSION['user_role'] != 'rs_manager'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <a href="<?php echo URLROOT; ?>/users/addInventory">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
               <?php echo file_get_contents("../app/assets/user-minus-solid.svg"); ?>
@@ -26,22 +30,23 @@
           </a>
         </th> -->
 
-      </tr>
-    </thead>
-    <tbody>
+  <tbody>
     <?php foreach ($data['items'] as $item) : ?>
       <tr>
+
         <td><?php echo $item->productID; ?></td>
         <td><?php echo $item->productName; ?></td>
         <td><?php echo $item->productQuantity; ?></td>
         <td><?php echo $item->sellingPrice; ?></td>
-        <!-- <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php //echo $user->employeeID; ?>" class="btn btn-warning">Edit</a></td> -->
-        <!-- <td><a href="<?php echo URLROOT; ?>/users/deleteUser/<?php //echo $user->employeeID; ?>" class="btn btn-danger">Remove</a></td> -->
+        <!-- <td><a href="<?php echo URLROOT; ?>/users/editUser/<?php //echo $user->employeeID; 
+                                                                ?>" class="btn btn-warning">Edit</a></td> -->
+        <!-- <td><a href="<?php echo URLROOT; ?>/users/deleteUser/<?php //echo $user->employeeID; 
+                                                                  ?>" class="btn btn-danger">Remove</a></td> -->
       </tr>
     <?php endforeach; ?>
-    
-    </tbody>
-    
-  </table>
+
+  </tbody>
+
+</table>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

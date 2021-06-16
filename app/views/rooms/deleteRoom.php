@@ -1,5 +1,8 @@
-<?php require APPROOT . '/views/inc/header.php'?>
+<?php #require APPROOT . '/views/inc/header.php'?>
 <?php require APPROOT . '/views/inc/navbar.php'?>
+<?php if($_SESSION['user_role'] != 'ht_manager'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
     <div>
         <h1>DELETE Room </h1>
         <p>Are you sure you want to delete <b><?php echo $data['RoomNo']?></b> Room ?</p>

@@ -8,7 +8,7 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -53,9 +53,9 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <!-- <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/showInfo/<?php echo $_SESSION['user_id']; ?>">My Data</a>
         </li>
@@ -65,7 +65,7 @@
           </li>
         <?php elseif ($_SESSION['user_role'] == 'receptionist') : ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rec/">Manage</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/receptionist/">Manage</a>
           </li>
         <?php elseif ($_SESSION['user_role'] == 'rs_manager') : ?>
           <li class="nav-item">

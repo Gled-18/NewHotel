@@ -58,6 +58,7 @@
 
     public function updateManageSupplies($data, $id)
     {
+      print_r($data);
       $this->db->query('INSERT INTO managesupplies( manageSuppliesDate, Quantity, purchasePrice, productName, action, productID, employeeID) VALUES (CURDATE(), :Quantity,  :purchasePrice, :productName, :action ,:productID, :employeeID)');
       $this->db->bind(':Quantity', $data['Quantity']);
       $this->db->bind(':purchasePrice', $data['purchasePrice']);

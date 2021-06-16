@@ -80,13 +80,13 @@ class Users extends Controller
         $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_role'] = $user->Role;
         if ($_SESSION['user_role'] == 'ht_manager') {
-            redirect('users/ht_manager');
+            redirect('users/manage');
         }
         else if($_SESSION['user_role'] == 'receptionist') {
             redirect ('users/receptionist');
         }
         else if($_SESSION['user_role'] == 'rs_manager') {
-            redirect ('users/rs_manager');
+            redirect ('users/manage_rs_manager');
         }else if($_SESSION['user_role'] == 'waiter') {
             redirect ('users/manageWaiters');
         }
@@ -135,6 +135,8 @@ class Users extends Controller
 
     public function addInventory()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
            
@@ -171,6 +173,8 @@ class Users extends Controller
     }
 
     public function manage_inventory(){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
            
@@ -259,6 +263,8 @@ class Users extends Controller
 
     public function addClient()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -309,6 +315,8 @@ class Users extends Controller
     }
 
     public function editClient($clientID){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -389,6 +397,8 @@ class Users extends Controller
     }
 
     public function addReservation(){
+         error_reporting(0);
+          ini_set('display_errors', 0);
         $var = $this->roomModel->getRoomsIDNO();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -489,6 +499,8 @@ class Users extends Controller
     }
 
     public function editReservation($requestID){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -564,7 +576,10 @@ class Users extends Controller
         $data = [
             'id' => $_SESSION['user_id'],
             'name' => $currUser->Name,
-            'description' => $currUser->Descrition
+            'description' => $currUser->Descrition,
+            'PhoneNo' => $currUser->PhoneNo,
+            'Role' => $currUser->Role,
+            'Email' => $currUser->Email
         ];
         $this->view('users/showInfo', $data);
     }
@@ -585,9 +600,12 @@ class Users extends Controller
 
     public function addUser()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
             //`Name`, `Surname`, `PhoneNo`, `StreetNo`, `ApartamentNo`, `Role`, `Descrition`, `Email`, `Password`
+            
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
                 'name' => trim($_POST['Name']),
@@ -678,6 +696,7 @@ class Users extends Controller
             }
         }else {
             //load view with errors
+        
             $this->view('/users/addUser', $data);
         }
     }else {
@@ -702,12 +721,15 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
+       
             $this->view('users/addUser', $data);
         }
     }
 
     public function editUser($id)
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize Post array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
