@@ -87,6 +87,8 @@ class Users extends Controller
         }
         else if($_SESSION['user_role'] == 'rs_manager') {
             redirect ('users/rs_manager');
+        }else if($_SESSION['user_role'] == 'waiter') {
+            redirect ('users/manageWaiters');
         }
 
     }
@@ -116,6 +118,10 @@ class Users extends Controller
         $this->view('users/manage_rs_manager');
     }
 
+    public function waiter()
+    {
+        $this->manageWaiters();
+    }
 
     /////////inventory
     public function show_inventory()
@@ -603,7 +609,6 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
-            print_r($data);
 
             //need some validation here
             //validate email
@@ -674,7 +679,7 @@ class Users extends Controller
             }
         }else {
             //load view with errors
-            print_r($data);
+        
             $this->view('/users/addUser', $data);
         }
     }else {
@@ -699,7 +704,7 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
-            print_r($data);
+       
             $this->view('users/addUser', $data);
         }
     }
@@ -818,5 +823,12 @@ class Users extends Controller
             ];
             $this->view('users/deleteUser', $data);
         }
+    }
+    public function manageWaiters(){
+        $items = $this->inventoryModel->show();
+        $data = [
+            'items' => $items
+        ];
+        $this->view('users/manageWaiters', $data);
     }
 }

@@ -72,11 +72,10 @@
             <div class="form-group required col">
               <label for="exampleFormControlSelect1" class="control-label">Role:</label>
               <select class="form-control" id="exampleFormControlSelect1" name="Role">
-                <option>Hotel Manager</option>
-                <option>Restaurant Manager</option>
-                <option>Waiter</option>
-                <option>Receptionist</option>
-                <option>Other</option>
+                <?php $position = array('ht_manager', 'rs_manager', 'waiter', 'receptionist', 'other'); ?>
+                <?php foreach ($position as $Position) : ?>
+                  <option value='<?php echo $Position; ?>' <?php if ($Position == $data['role']) echo ' selected="selected"'; ?>><?php echo $Position; ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
             <div class="form-group col">
@@ -102,7 +101,7 @@
 
 <!-- <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" name="Email" value="<?// php # echo $data['email']
+    <input type="email" name="Email" value="<? // php # echo $data['email']
                                             ?>" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" class="form-control form-control-lg
                                             <?php #echo (!empty($data['email_error'])) ? 'is-invalid': ''
                                             ?>"

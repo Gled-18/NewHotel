@@ -34,7 +34,6 @@ class Rooms extends Controller
 
             ];
 
-            print_r($data);
             // Validation
 
 
@@ -42,7 +41,7 @@ class Rooms extends Controller
             
             if (empty($data['RoomNo'])) {
                 $data['RoomNo_error'] = 'Please enter number of room';
-            } elseif (!filter_var($data['RoomNo'])) { 
+            } elseif (!is_numeric($data['RoomNo'])) { 
                 $data['RoomNo_error'] = 'Please enter only numbers';
             }
 
