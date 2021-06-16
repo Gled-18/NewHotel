@@ -1,6 +1,9 @@
 <?php //require APPROOT . '/views/inc/header.php'; 
 ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <!-- <?php //echo "Recepsionisti" . $_SESSION['user_id']; 
         ?> -->
 

@@ -1,5 +1,8 @@
-<?php require APPROOT . '/views/inc/header.php' ?>
+<?php #require APPROOT . '/views/inc/header.php' ?>
 <?php require APPROOT . '/views/inc/navbar.php' ?>
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <form action="<?php echo URLROOT;?>/users/editClient/<?php echo $data['clientID'] ;?>" method="post">
     <div class="form-group">
         <label for="formGroupExampleInput">Name</label>

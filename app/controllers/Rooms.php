@@ -3,12 +3,17 @@ class Rooms extends Controller
 {
     public function __construct()
     {
+        if(!isLoggedIn()){
+            redirect('users/login');
+        }
         $this->roomModel = $this->model('Room');
     }
 
     public function manageRooms()
     {
-
+        // if($_SESSION['user_role'] != 'ht_manger'){
+        //     redirect('users/login');
+        // }
         $content = $this->roomModel->showRooms();
         $data = [
             'Room' => $content
@@ -18,6 +23,7 @@ class Rooms extends Controller
 
     public function addRoom()
     {
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

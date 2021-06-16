@@ -1,6 +1,8 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php #require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
-
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <article class="">
     <div class="row row-cols-3 row-cols-sm-2 row-cols-md-3">
         <div class="col">

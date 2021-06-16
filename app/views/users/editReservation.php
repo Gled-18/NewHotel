@@ -1,5 +1,8 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php #require APPROOT . '/views/inc/header.php'; ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 
     <!-- <label for="birthday">Start Date:</label>
     <input type="date" id="stayStartDate" name="birthday">

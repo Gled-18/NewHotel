@@ -135,6 +135,8 @@ class Users extends Controller
 
     public function addInventory()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
            
@@ -171,6 +173,8 @@ class Users extends Controller
     }
 
     public function manage_inventory(){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
            
@@ -259,6 +263,8 @@ class Users extends Controller
 
     public function addClient()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -309,6 +315,8 @@ class Users extends Controller
     }
 
     public function editClient($clientID){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -568,7 +576,10 @@ class Users extends Controller
         $data = [
             'id' => $_SESSION['user_id'],
             'name' => $currUser->Name,
-            'description' => $currUser->Descrition
+            'description' => $currUser->Descrition,
+            'PhoneNo' => $currUser->PhoneNo,
+            'Role' => $currUser->Role,
+            'Email' => $currUser->Email
         ];
         $this->view('users/showInfo', $data);
     }

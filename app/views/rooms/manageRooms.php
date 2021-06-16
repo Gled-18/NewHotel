@@ -3,7 +3,9 @@
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 
 <!-- todo te merre lista e dhomave nga db qe ne page load -->
-
+<?php if($_SESSION['user_role'] != 'ht_manager'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,8 +18,6 @@
 </head>
 
 <body>
-
-
     <div>
         <table id="tableData " class="table table-striped table-hover">
             <thead>

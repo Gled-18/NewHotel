@@ -3,6 +3,10 @@
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 <div>
 
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
+
     <table class="table table-striped ">
         <thead>
             <tr>

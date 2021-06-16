@@ -1,5 +1,8 @@
-<?php require APPROOT . '/views/inc/header.php' ?>
+<?php #require APPROOT . '/views/inc/header.php' ?>
 <?php require APPROOT . '/views/inc/navbar.php' ?>
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
     <div>
         <h1>DELETE User</h1>
         <p>Are you sure you want to delete client <b><?php echo $data['clientName']." ".$data['Surname']?></b>?</p>

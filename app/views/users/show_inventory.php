@@ -1,6 +1,9 @@
 <?php //require APPROOT . '/views/inc/header.php'; 
 ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
+<?php if($_SESSION['user_role'] != 'rs_manager'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <a href="<?php echo URLROOT; ?>/users/addInventory">
             <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add User" data-delay="0">
               <?php echo file_get_contents("../app/assets/user-minus-solid.svg"); ?>

@@ -1,7 +1,9 @@
 <?php //require APPROOT . '/views/inc/header.php' 
 ?>
 <?php require APPROOT . '/views/inc/navbar.php' ?>
-
+<?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +36,7 @@
                         <?php echo (!empty($data['Surname_err'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['Surname'] ?>">
                         <span class="invalid-feedback"><?php echo $data['Surname_err'] ?></span>
                     </div>
-                    
+
 
 
                     <button type="submit" class="btn btn-primary">Submit</button>

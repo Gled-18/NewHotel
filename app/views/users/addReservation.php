@@ -11,7 +11,9 @@
     <input type="text" name="clientName">
     <input type="submit" name="submit" value="Search">
     </form> -->
-
+    <?php if($_SESSION['user_role'] != 'receptionist'): ?>
+        <?php redirect('users/login'); ?>
+        <?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">
