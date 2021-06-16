@@ -75,9 +75,9 @@
 
                                 <?php $RoomID = strval($RoomsIDNO->RoomID); ?>
                                 <?php $myStr1 = strval($RoomsIDNO->RoomNo); ?>
-                                <?php var_dump($myStr); ?>
-                                <?php var_dump($myStr1); ?>
-                                <?php var_dump($RoomsIDNO); ?>
+                                <?php //var_dump($myStr); ?>
+                                <?php //var_dump($myStr1); ?>
+                                <?php //var_dump($RoomsIDNO); ?>
 
 
 
