@@ -45,9 +45,9 @@
                     <td><a href="<?php echo URLROOT; ?>/roomsType/editRoomType/<?php echo $roomType->typeID; ?>" class="btn btn-warning"><i class="far fa-edit"></i><!-- Edit --></a></td>
                     <td><a href="<?php echo URLROOT; ?>/roomsType/deleteRoomType/<?php echo $roomType->typeID; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i><!-- Delete --></a></td>
 
-                    <td>
+                    <!--        <td>
                         <a href="<?php echo URLROOT; ?>/roomsType/deleteRoomType/<?php echo $roomType->typeID; ?>" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                            <i class="far fa-trash-alt"></i><!-- Delete --></a>
+                            <i class="far fa-trash-alt"></i> Delete </a>-->
 
 
                     </td>
