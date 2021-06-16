@@ -80,13 +80,13 @@ class Users extends Controller
         $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_role'] = $user->Role;
         if ($_SESSION['user_role'] == 'ht_manager') {
-            redirect('users/ht_manager');
+            redirect('users/manage');
         }
         else if($_SESSION['user_role'] == 'receptionist') {
             redirect ('users/receptionist');
         }
         else if($_SESSION['user_role'] == 'rs_manager') {
-            redirect ('users/rs_manager');
+            redirect ('users/manage_rs_manager');
         }else if($_SESSION['user_role'] == 'waiter') {
             redirect ('users/manageWaiters');
         }
