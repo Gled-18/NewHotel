@@ -19,7 +19,7 @@
         <div class="card rounded">
             <div class="card-body card-block d-table-cel align-middle">
 
-                <h4 class="card-title">Add Reservation</h4>
+                <h4 class="card-title">Add Client</h4>
 
                 <form action="<?php echo URLROOT . '/users/addClient' ?>" method="post">
                     <div class="form-group">
@@ -34,6 +34,7 @@
                         <?php echo (!empty($data['Surname_err'])) ? 'is-invalid' : '' ?>" value="<?php echo $data['Surname'] ?>">
                         <span class="invalid-feedback"><?php echo $data['Surname_err'] ?></span>
                     </div>
+                    
 
 
                     <button type="submit" class="btn btn-primary">Submit</button>

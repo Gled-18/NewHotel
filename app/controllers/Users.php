@@ -389,6 +389,8 @@ class Users extends Controller
     }
 
     public function addReservation(){
+         error_reporting(0);
+          ini_set('display_errors', 0);
         $var = $this->roomModel->getRoomsIDNO();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -489,6 +491,8 @@ class Users extends Controller
     }
 
     public function editReservation($requestID){
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
 
@@ -585,6 +589,8 @@ class Users extends Controller
 
     public function addUser()
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
             //`Name`, `Surname`, `PhoneNo`, `StreetNo`, `ApartamentNo`, `Role`, `Descrition`, `Email`, `Password`
@@ -711,6 +717,8 @@ class Users extends Controller
 
     public function editUser($id)
     {
+        error_reporting(0);
+        ini_set('display_errors', 0);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize Post array
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

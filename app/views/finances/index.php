@@ -29,7 +29,7 @@
             <div id="chartDiv2"></div>
         </div>
 
-        <form class="h-100 align-self-start">
+        <!-- <form class="h-100 align-self-start">
             <div class="form-group row">
                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
                 <div class="col-sm-10">
@@ -48,7 +48,7 @@
                     <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
                 </div>
             </div>
-        </form>
+        </form> -->
 
         <div class="col col-4">
             <h1>Financat e Plazhit(?)</h1>

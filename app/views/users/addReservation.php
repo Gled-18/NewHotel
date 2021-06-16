@@ -2,6 +2,7 @@
 ?>
 <?php require APPROOT . '/views/inc/navbar.php'; ?>
 
+
 <!-- <label for="birthday">Start Date:</label>
     <input type="date" id="stayStartDate" name="birthday">
     <label for="birthday">End Date:</label>

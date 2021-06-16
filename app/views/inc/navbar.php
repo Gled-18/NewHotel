@@ -65,7 +65,7 @@
           </li>
         <?php elseif ($_SESSION['user_role'] == 'receptionist') : ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/manage_rec/">Manage</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/receptionist/">Manage</a>
           </li>
         <?php elseif ($_SESSION['user_role'] == 'rs_manager') : ?>
           <li class="nav-item">
