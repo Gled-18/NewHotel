@@ -88,7 +88,7 @@ class Room
 
 
     public function deleteRoom($RoomID){
-        $this->db->query('Delete from Room where RoomID = :RoomID');
+        $this->db->query('Delete * from Room where RoomID = :RoomID');
         $this->db->bind(':RoomID', $RoomID);
 
         if ($this->db->execute()) {

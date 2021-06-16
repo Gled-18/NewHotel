@@ -117,6 +117,8 @@ class RoomsType extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($this->roomModel->deleteType($typeID)) {
+
+                //nuk kthen data
                 flash('delete_success', 'RoomType Type is deleted.');
                 redirect('roomsType/roomType');
             }
@@ -126,6 +128,8 @@ class RoomsType extends Controller
                 'typeName' => $roomType->typeName,
                 'typeID' => $roomType->typeID
             ];
+
+            //nqs deshton vazhdo te form i njejt
             $this->view('roomsType/deleteRoomType', $data);
         }
     }
